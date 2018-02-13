@@ -13,8 +13,8 @@ public class WelcomeScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcomescreen);
 
-        Button loginButton = (Button) findViewById(R.id.button_sign_in);
-        loginButton.setOnClickListener(new View.OnClickListener() {
+        Button mLoginButton = (Button) findViewById(R.id.button_sign_in);
+        mLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent myIntent = new Intent(WelcomeScreen.this, LoginActivity.class);
@@ -22,8 +22,8 @@ public class WelcomeScreen extends AppCompatActivity {
             }
         });
 
-        Button registerButton = (Button) findViewById(R.id.button_register);
-        registerButton.setOnClickListener(new View.OnClickListener() {
+        Button mRegisterButton = (Button) findViewById(R.id.button_register);
+        mRegisterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent myIntent = new Intent(WelcomeScreen.this, RegisterActivity.class);

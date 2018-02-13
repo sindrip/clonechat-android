@@ -6,36 +6,25 @@
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
     tools:context=".RegisterActivity"
-    android:background="#9189C7"
     android:orientation="vertical"
     android:gravity="center">
 
-    <EditText
+    <TextView
         android:id="@+id/edittext_username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/action_username"/>
+        android:text="@string/action_loginsuccess"
+        android:textColor="#000000"
+        android:paddingBottom="100dp"/>
 
-    <EditText
-        android:id="@+id/edittext_password1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/action_password"/>
-
-    <EditText
-        android:id="@+id/edittext_password2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/action_repeatpassword" />
-
-    <Button
-        android:id="@+id/button_login"
+      <Button
+        android:id="@+id/button_sign_out"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/button_sign_in"
         android:layout_marginTop="10dp"
         android:fontFamily="sans-serif-medium"
-        android:text="@string/action_register"
+        android:text="@string/action_sign_out"
         android:textAllCaps="false"
         android:textColor="#E4E1F5"
         android:textSize="25dp"
