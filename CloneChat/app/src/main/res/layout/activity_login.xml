@@ -3,38 +3,46 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp"
     tools:context=".LoginActivity"
-    android:background="#9189C7"
     android:orientation="vertical"
-    android:gravity="center">
+    android:gravity="center"
+    style="@style/Background">
 
-    <EditText
-        android:id="@+id/edittext_username"
+    <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/action_username"/>
+        android:layout_height="wrap_content">
 
-    <EditText
-        android:id="@+id/edittext_password"
+        <EditText
+            android:id="@+id/edittext_username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/action_username"
+            android:inputType="textPersonName"
+            style="@style/TextInput"/>
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/action_password" />
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/edittext_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/action_password"
+            android:inputType="textPassword"
+            style="@style/TextInput"/>
+
+    </android.support.design.widget.TextInputLayout>
 
     <Button
         android:id="@+id/button_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/button_sign_in"
-        android:layout_marginTop="10dp"
-        android:fontFamily="sans-serif-medium"
         android:text="@string/action_sign_in"
-        android:textAllCaps="false"
-        android:textColor="#E4E1F5"
-        android:textSize="25dp"
-        android:textStyle="bold"
-        android:background="#6960A9"/>
+        style="@style/LargeButton"/>
 
 
 </LinearLayout>
