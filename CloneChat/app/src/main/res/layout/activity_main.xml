@@ -25,5 +25,4 @@
         android:text="@string/action_sign_out"
         style="@style/LargeButton"/>
 
-
 </LinearLayout>
