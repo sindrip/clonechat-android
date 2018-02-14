@@ -45,7 +45,4 @@
         <item name="android:singleLine">true</item>
     </style>
 
-    <style name="ErrorMessage">
-        <item name="android:textColor">#8058A4</item>
-    </style>
 </resources>

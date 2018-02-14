@@ -69,12 +69,12 @@ public class LoginActivity extends AppCompatActivity {
                             public void run() {
                                 Toast.makeText(getApplicationContext(),
                                         "Connection error",
-                                        Toast.LENGTH_SHORT).show();
-                                        mButtonLogin.setEnabled(true);
-                                        mButtonLogin.setBackgroundColor(Color.parseColor("#6960A9"));
-                                        mButtonLogin.setText(R.string.action_sign_in);
+                                        Toast.LENGTH_SHORT);
+                                mButtonLogin.setEnabled(true);
+                                mButtonLogin.setBackgroundColor(Color.parseColor("#6960A9"));
+                                mButtonLogin.setText(R.string.action_sign_in);
                             }
-                        });
+                    });
                         System.out.println(e);
                     }
 
