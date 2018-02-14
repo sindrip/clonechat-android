@@ -48,6 +48,14 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                if(mUsername.getText().toString().equals("")) {
+                    mUsername.setError(getString(R.string.username_cant_be_empty));
+                }
+
+                if(mPassword.getText().toString().equals("")) {
+                    mPassword.setError(getString(R.string.password_cant_be_empty));
+                }
+
                 mButtonLogin.setEnabled(false);
                 mButtonLogin.setText(getString(R.string.working));
                 mButtonLogin.setBackgroundColor(Color.parseColor("#BCB7E1"));
