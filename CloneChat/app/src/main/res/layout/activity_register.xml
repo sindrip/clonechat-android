@@ -5,54 +5,63 @@
     android:layout_height="match_parent"
     tools:context=".RegisterActivity"
     android:orientation="vertical"
-    android:gravity="center"
     style="@style/Background">
 
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <EditText
-            android:id="@+id/edittext_username_register"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/action_username"
-            style="@style/TextInput"/>
-
-    </android.support.design.widget.TextInputLayout>
-
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <EditText
-            android:id="@+id/edittext_password1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/action_password"
-            style="@style/TextInput"/>
-
-    </android.support.design.widget.TextInputLayout>
-
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <EditText
-            android:id="@+id/edittext_password2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/action_repeatpassword"
-            style="@style/TextInput"/>
-
-    </android.support.design.widget.TextInputLayout>
-
-    <Button
-        android:id="@+id/button_new_register"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/button_sign_in"
-        android:text="@string/action_register"
-        style="@style/LargeButton"/>
+        android:orientation="vertical"
+        android:layout_marginTop="110dp">
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/edittext_username_register"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/action_username"
+                style="@style/TextInput"/>
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/edittext_password1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/action_password"
+                android:inputType="textPassword"
+                style="@style/TextInput"/>
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/edittext_password2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/action_repeatpassword"
+                android:inputType="textPassword"
+                style="@style/TextInput"/>
+
+        </android.support.design.widget.TextInputLayout>
+
+        <Button
+            android:id="@+id/button_new_register"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/button_sign_in"
+            android:text="@string/action_register"
+            style="@style/LargeButton"/>
+    </LinearLayout>
+
 
 </LinearLayout>

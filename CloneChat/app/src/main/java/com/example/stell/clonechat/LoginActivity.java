@@ -47,6 +47,11 @@ public class LoginActivity extends AppCompatActivity {
         mButtonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                mButtonLogin.setEnabled(false);
+                mButtonLogin.setText(getString(R.string.working));
+                mButtonLogin.setBackgroundColor(Color.parseColor("#BCB7E1"));
+
                 Call logincall = client.newCall(loginRequest());
                 logincall.enqueue(new Callback() {
                     @Override
@@ -57,6 +62,9 @@ public class LoginActivity extends AppCompatActivity {
                                 Toast.makeText(getApplicationContext(),
                                         "Connection error",
                                         Toast.LENGTH_SHORT).show();
+                                        mButtonLogin.setEnabled(true);
+                                        mButtonLogin.setBackgroundColor(Color.parseColor("#6960A9"));
+                                        mButtonLogin.setText(R.string.action_sign_in);
                             }
                         });
                         System.out.println(e);
@@ -73,6 +81,9 @@ public class LoginActivity extends AppCompatActivity {
                                     startActivity(myIntent);
                                 } else {
                                     Toast.makeText(getApplicationContext(), "Invalid Login", Toast.LENGTH_SHORT).show();
+                                    mButtonLogin.setEnabled(true);
+                                    mButtonLogin.setBackgroundColor(Color.parseColor("#6960A9"));
+                                    mButtonLogin.setText(R.string.action_sign_in);
                                 }
                             }
                         });

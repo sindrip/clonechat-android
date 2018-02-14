@@ -9,4 +9,5 @@
     <string name="action_repeatpassword">Repeat password</string>
     <string name="action_sign_out">Sign out</string>
     <string name="action_loginsuccess">Login was successful!</string>
+    <string name="working">Working...</string>
 </resources>

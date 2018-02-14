@@ -1,6 +1,7 @@
 package com.example.stell.clonechat;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -55,6 +56,10 @@ public class RegisterActivity extends AppCompatActivity {
                     return;
                 }
 
+                mButtonRegister.setEnabled(false);
+                mButtonRegister.setText(getString(R.string.working));
+                mButtonRegister.setBackgroundColor(Color.parseColor("#BCB7E1"));
+
                 Call registercall = client.newCall(registerRequest());
                 registercall.enqueue(new Callback() {
                     @Override
@@ -62,6 +67,9 @@ public class RegisterActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(),
                                 "Connection error",
                                 Toast.LENGTH_SHORT).show();
+                                mButtonRegister.setEnabled(true);
+                                mButtonRegister.setBackgroundColor(Color.parseColor("#6960A9"));
+                                mButtonRegister.setText(R.string.action_sign_in);
                     }
 
                     @Override
@@ -76,6 +84,9 @@ public class RegisterActivity extends AppCompatActivity {
                                     startActivity(myIntent);
                                 } else {
                                     Toast.makeText(getApplicationContext(), "Error In Registration", Toast.LENGTH_SHORT).show();
+                                    mButtonRegister.setEnabled(true);
+                                    mButtonRegister.setBackgroundColor(Color.parseColor("#6960A9"));
+                                    mButtonRegister.setText(R.string.action_sign_in);
                                 }
                             }
                         });
