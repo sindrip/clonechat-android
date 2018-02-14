@@ -13,7 +13,7 @@
         android:layout_height="wrap_content">
 
         <EditText
-            android:id="@+id/edittext_username"
+            android:id="@+id/edittext_username_register"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/action_username"
@@ -48,7 +48,7 @@
     </android.support.design.widget.TextInputLayout>
 
     <Button
-        android:id="@+id/button_login"
+        android:id="@+id/button_new_register"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/button_sign_in"

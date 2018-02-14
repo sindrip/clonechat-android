@@ -15,6 +15,14 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+        debug {
+            resValue 'string', 'APIURL', '"http://10.0.2.2:3000"'
+        }
+        debug_prod {
+            signingConfig signingConfigs.debug
+            resValue 'string', 'APIURL', '"https://clonechat-server.herokuapp.com"'
+            debuggable true
+        }
     }
 }
 
@@ -26,4 +34,5 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     implementation 'com.android.support:design:26.1.0'
+    implementation 'com.squareup.okhttp3:okhttp:3.9.1'
 }
