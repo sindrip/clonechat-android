@@ -22,6 +22,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/action_username"
+                android:inputType="text"
                 style="@style/TextInput"/>
 
         </android.support.design.widget.TextInputLayout>
