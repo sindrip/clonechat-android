@@ -25,4 +25,11 @@
         android:text="@string/action_sign_out"
         style="@style/LargeButton"/>
 
+    <Button
+        android:id="@+id/button_test_login_check"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Test login"
+        style="@style/LargeButton"/>
+
 </LinearLayout>
