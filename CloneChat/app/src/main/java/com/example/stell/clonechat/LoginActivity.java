@@ -1,12 +1,19 @@
 package com.example.stell.clonechat;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.franmontiel.persistentcookiejar.ClearableCookieJar;
@@ -55,6 +62,19 @@ public class LoginActivity extends AppCompatActivity {
         mButtonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                if(mUsername.getText().toString().equals("")) {
+                    mUsername.setError(getString(R.string.username_cant_be_empty));
+                }
+
+                if(mPassword.getText().toString().equals("")) {
+                    mPassword.setError(getString(R.string.password_cant_be_empty));
+                }
+
+                mButtonLogin.setEnabled(false);
+                mButtonLogin.setText(getString(R.string.working));
+                mButtonLogin.setBackgroundColor(Color.parseColor("#BCB7E1"));
+
                 Call logincall = client.newCall(loginRequest());
                 logincall.enqueue(new Callback() {
                     @Override
@@ -62,11 +82,15 @@ public class LoginActivity extends AppCompatActivity {
                         LoginActivity.this.runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                Toast.makeText(getApplicationContext(),
-                                        "Connection error",
-                                        Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(),
+                                "Connection error",
+                                Toast.LENGTH_SHORT).show();
+
+                            mButtonLogin.setEnabled(true);
+                            mButtonLogin.setBackgroundColor(Color.parseColor("#6960A9"));
+                            mButtonLogin.setText(R.string.action_sign_in);
                             }
-                        });
+                    });
                         System.out.println(e);
                     }
 
@@ -81,6 +105,9 @@ public class LoginActivity extends AppCompatActivity {
                                     startActivity(myIntent);
                                 } else {
                                     Toast.makeText(getApplicationContext(), "Invalid Login", Toast.LENGTH_SHORT).show();
+                                    mButtonLogin.setEnabled(true);
+                                    mButtonLogin.setBackgroundColor(Color.parseColor("#6960A9"));
+                                    mButtonLogin.setText(R.string.action_sign_in);
                                 }
                             }
                         });

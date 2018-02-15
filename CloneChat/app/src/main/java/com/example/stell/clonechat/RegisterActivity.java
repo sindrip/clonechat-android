@@ -1,6 +1,7 @@
 package com.example.stell.clonechat;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -56,12 +57,21 @@ public class RegisterActivity extends AppCompatActivity {
         mButtonRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (!mPassword1.getText().toString().equals(mPassword2.getText().toString())) {
-                    Toast.makeText(getApplicationContext(),
-                            "Passwords must match",
-                            Toast.LENGTH_SHORT).show();
-                    return;
+                if(mUsername.getText().toString().equals("")) {
+                     mUsername.setError(getString(R.string.username_cant_be_empty));
                 }
+
+                if(mPassword1.getText().toString().equals("")) {
+                    mPassword1.setError(getString(R.string.password_cant_be_empty));
+                }
+
+                if (!mPassword1.getText().toString().equals(mPassword2.getText().toString())) {
+                    mPassword2.setError(getString(R.string.password_dont_match));
+                }
+
+                mButtonRegister.setEnabled(false);
+                mButtonRegister.setText(getString(R.string.working));
+                mButtonRegister.setBackgroundColor(Color.parseColor("#BCB7E1"));
 
                 Call registercall = client.newCall(registerRequest());
                 registercall.enqueue(new Callback() {
@@ -70,6 +80,9 @@ public class RegisterActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(),
                                 "Connection error",
                                 Toast.LENGTH_SHORT).show();
+                                mButtonRegister.setEnabled(true);
+                                mButtonRegister.setBackgroundColor(Color.parseColor("#6960A9"));
+                                mButtonRegister.setText(R.string.action_sign_in);
                     }
 
                     @Override
@@ -84,6 +97,9 @@ public class RegisterActivity extends AppCompatActivity {
                                     startActivity(myIntent);
                                 } else {
                                     Toast.makeText(getApplicationContext(), "Error In Registration", Toast.LENGTH_SHORT).show();
+                                    mButtonRegister.setEnabled(true);
+                                    mButtonRegister.setBackgroundColor(Color.parseColor("#6960A9"));
+                                    mButtonRegister.setText(R.string.action_sign_in);
                                 }
                             }
                         });
