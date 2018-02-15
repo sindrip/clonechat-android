@@ -1,6 +1,7 @@
 package com.example.stell.clonechat;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
@@ -84,6 +85,11 @@ public class MainActivity extends AppCompatActivity {
         mLogoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                mLogoutButton.setEnabled(false);
+                mLogoutButton.setText(getString(R.string.working));
+                mLogoutButton.setBackgroundColor(Color.parseColor("#BCB7E1"));
+
                 Call logoutcall = client.newCall(logoutRequest());
                 logoutcall.enqueue(new Callback() {
                     @Override
@@ -94,6 +100,9 @@ public class MainActivity extends AppCompatActivity {
                                 Toast.makeText(getApplicationContext(),
                                         "Network error",
                                         Toast.LENGTH_SHORT).show();
+                                mTestLoginCheckButton.setEnabled(true);
+                                mTestLoginCheckButton.setBackgroundColor(Color.parseColor("#6960A9"));
+                                mTestLoginCheckButton.setText(R.string.action_sign_in);
                             }
                         });
                         System.out.println(e);
@@ -111,6 +120,9 @@ public class MainActivity extends AppCompatActivity {
                                     finishAffinity();
                                 } else {
                                     Toast.makeText(getApplicationContext(), "Network error", Toast.LENGTH_SHORT).show();
+                                    mTestLoginCheckButton.setEnabled(true);
+                                    mTestLoginCheckButton.setBackgroundColor(Color.parseColor("#6960A9"));
+                                    mTestLoginCheckButton.setText(R.string.action_sign_in);
                                 }
                             }
                         });
