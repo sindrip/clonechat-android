@@ -8,6 +8,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.franmontiel.persistentcookiejar.ClearableCookieJar;
+import com.franmontiel.persistentcookiejar.PersistentCookieJar;
+import com.franmontiel.persistentcookiejar.cache.SetCookieCache;
+import com.franmontiel.persistentcookiejar.persistence.SharedPrefsCookiePersistor;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -36,8 +41,11 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
         baseUrl = getString(R.string.APIURL);
 
+        ClearableCookieJar cookieJar =
+                new PersistentCookieJar(new SetCookieCache(), new SharedPrefsCookiePersistor(getApplicationContext()));
+
         client = new OkHttpClient.Builder()
-                .cookieJar(new WebviewCookieHandler())
+                .cookieJar(cookieJar)
                 .build();
 
         mUsername = findViewById(R.id.edittext_username_register);

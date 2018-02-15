@@ -4,6 +4,11 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.franmontiel.persistentcookiejar.ClearableCookieJar;
+import com.franmontiel.persistentcookiejar.PersistentCookieJar;
+import com.franmontiel.persistentcookiejar.cache.SetCookieCache;
+import com.franmontiel.persistentcookiejar.persistence.SharedPrefsCookiePersistor;
+
 import java.io.IOException;
 
 import okhttp3.Call;
@@ -22,8 +27,11 @@ public class SplashScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         baseUrl = getString(R.string.APIURL);
 
+        ClearableCookieJar cookieJar =
+                new PersistentCookieJar(new SetCookieCache(), new SharedPrefsCookiePersistor(getApplicationContext()));
+
         client = new OkHttpClient.Builder()
-                .cookieJar(new WebviewCookieHandler())
+                .cookieJar(cookieJar)
                 .build();
 
         Call testlogincall = client.newCall(testloginRequest());
@@ -54,6 +62,7 @@ public class SplashScreen extends AppCompatActivity {
                         if (success) {
                             startActivity(new Intent(SplashScreen.this, MainActivity.class));
                         } else {
+//                            startActivity(new Intent(SplashScreen.this, MainActivity.class));
                             startActivity(new Intent(SplashScreen.this, WelcomeScreen.class));
                         }
                         finish();

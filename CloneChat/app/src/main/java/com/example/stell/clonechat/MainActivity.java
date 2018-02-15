@@ -7,10 +7,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.franmontiel.persistentcookiejar.ClearableCookieJar;
+import com.franmontiel.persistentcookiejar.PersistentCookieJar;
+import com.franmontiel.persistentcookiejar.cache.SetCookieCache;
+import com.franmontiel.persistentcookiejar.persistence.SharedPrefsCookiePersistor;
+
 import java.io.IOException;
 
 import okhttp3.Call;
 import okhttp3.Callback;
+import okhttp3.CookieJar;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -29,8 +35,11 @@ public class MainActivity extends AppCompatActivity {
 
         baseUrl = getString(R.string.APIURL);
 
+        ClearableCookieJar cookieJar =
+                new PersistentCookieJar(new SetCookieCache(), new SharedPrefsCookiePersistor(getApplicationContext()));
+
         client = new OkHttpClient.Builder()
-                .cookieJar(new WebviewCookieHandler())
+                .cookieJar(cookieJar)
                 .build();
         mTestLoginCheckButton = (Button) findViewById(R.id.button_test_login_check);
         mTestLoginCheckButton.setOnClickListener(new View.OnClickListener() {
