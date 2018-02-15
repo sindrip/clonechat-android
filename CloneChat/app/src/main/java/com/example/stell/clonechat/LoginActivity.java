@@ -3,6 +3,8 @@ package com.example.stell.clonechat;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -98,11 +100,12 @@ public class LoginActivity extends AppCompatActivity {
                     public void onResponse(Call call, Response response) throws IOException {
                         final boolean success = response.isSuccessful();
                         LoginActivity.this.runOnUiThread(new Runnable() {
+                            @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
                             @Override
                             public void run() {
                                 if (success) {
-                                    Intent myIntent = new Intent(LoginActivity.this, MainActivity.class);
-                                    startActivity(myIntent);
+                                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                                    finishAffinity();
                                 } else {
                                     Toast.makeText(getApplicationContext(), "Invalid Login", Toast.LENGTH_SHORT).show();
                                     mButtonLogin.setEnabled(true);

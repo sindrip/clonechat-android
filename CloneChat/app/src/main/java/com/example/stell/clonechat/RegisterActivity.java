@@ -82,7 +82,7 @@ public class RegisterActivity extends AppCompatActivity {
                                 Toast.LENGTH_SHORT).show();
                                 mButtonRegister.setEnabled(true);
                                 mButtonRegister.setBackgroundColor(Color.parseColor("#6960A9"));
-                                mButtonRegister.setText(R.string.action_sign_in);
+                                mButtonRegister.setText(R.string.action_register);
                     }
 
                     @Override
@@ -93,13 +93,13 @@ public class RegisterActivity extends AppCompatActivity {
                             @Override
                             public void run() {
                                 if (success) {
-                                    Intent myIntent = new Intent(RegisterActivity.this, MainActivity.class);
-                                    startActivity(myIntent);
+                                    startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+                                    finish();
                                 } else {
                                     Toast.makeText(getApplicationContext(), "Error In Registration", Toast.LENGTH_SHORT).show();
                                     mButtonRegister.setEnabled(true);
                                     mButtonRegister.setBackgroundColor(Color.parseColor("#6960A9"));
-                                    mButtonRegister.setText(R.string.action_sign_in);
+                                    mButtonRegister.setText(R.string.action_register);
                                 }
                             }
                         });

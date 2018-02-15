@@ -1,6 +1,8 @@
 package com.example.stell.clonechat;
 
 import android.content.Intent;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -101,10 +103,12 @@ public class MainActivity extends AppCompatActivity {
                     public void onResponse(Call call, Response response) throws IOException {
                         final boolean success = response.isSuccessful();
                         MainActivity.this.runOnUiThread(new Runnable() {
+                            @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
                             @Override
                             public void run() {
                                 if (success) {
                                     startActivity(new Intent(MainActivity.this, WelcomeScreen.class));
+                                    finishAffinity();
                                 } else {
                                     Toast.makeText(getApplicationContext(), "Network error", Toast.LENGTH_SHORT).show();
                                 }
