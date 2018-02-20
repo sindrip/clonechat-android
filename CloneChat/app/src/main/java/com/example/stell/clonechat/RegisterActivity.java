@@ -59,14 +59,17 @@ public class RegisterActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(mUsername.getText().toString().equals("")) {
                      mUsername.setError(getString(R.string.username_cant_be_empty));
+                     return;
                 }
 
                 if(mPassword1.getText().toString().equals("")) {
                     mPassword1.setError(getString(R.string.password_cant_be_empty));
+                    return;
                 }
 
                 if (!mPassword1.getText().toString().equals(mPassword2.getText().toString())) {
                     mPassword2.setError(getString(R.string.password_dont_match));
+                    return;
                 }
 
                 mButtonRegister.setEnabled(false);

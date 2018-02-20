@@ -20,7 +20,7 @@ android {
         }
         debug_prod {
             signingConfig signingConfigs.debug
-            resValue 'string', 'APIURL', '"https://clonechat-server.herokuapp.com"'
+            resValue 'string', 'APIURL', '"https://server.clonechat.club"'
             debuggable true
         }
     }
