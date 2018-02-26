@@ -13,7 +13,9 @@ public class AuthenticationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_authentication);
 
-        getSupportFragmentManager().beginTransaction()
-                .add(R.id.fragment_container, new WelcomeFragment()).commit();
+        getSupportFragmentManager()
+                .beginTransaction()
+                .add(R.id.fragment_container, new WelcomeFragment())
+                .commit();
     }
 }
