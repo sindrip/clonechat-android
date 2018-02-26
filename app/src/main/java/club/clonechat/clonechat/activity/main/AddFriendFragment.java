@@ -20,6 +20,7 @@ import android.widget.SearchView.OnQueryTextListener;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import club.clonechat.clonechat.R;
 import club.clonechat.clonechat.adapter.UserAdapter;
@@ -80,7 +81,8 @@ public class AddFriendFragment extends Fragment {
             @Override
             public void onResponse(Call<UserList> call, Response<UserList> response) {
                 Log.d("Msg", "a");
-                mUserAdapter.setDataList(response.body().getUserlist());
+                List<User> a = response.body().getUserlist();
+                mUserAdapter.setDataList(a);
                 mUserAdapter.notifyDataSetChanged();
             }
 
