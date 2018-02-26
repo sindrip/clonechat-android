@@ -112,7 +112,7 @@ public class FriendFragment extends Fragment {
                 Log.d("Bjo", "clicked");
                 getFragmentManager()
                         .beginTransaction()
-                        .replace(R.id.fragment_container_main, new AddFriendFragment())
+                        .replace(R.id.fragment_main_overlay, new AddFriendFragment())
                         .addToBackStack(null)
                         .commit();
                 return true;

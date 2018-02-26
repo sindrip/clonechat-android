@@ -49,16 +49,12 @@ public class AddFriendFragment extends Fragment {
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        menu.clear();
         inflater.inflate(R.menu.menu_searchusers, menu);
-        /////
         SearchView search = (SearchView) menu.findItem(R.id.search_users).getActionView();
-        // 9
         search.setOnQueryTextListener(new OnQueryTextListener() {
-            /*/*/
-
             @Override
             public boolean onQueryTextSubmit(String query) {
-                Log.d("Msg",query);
                 getUsersByQuery(query);
                 return false;
             }
@@ -66,21 +62,16 @@ public class AddFriendFragment extends Fragment {
             @Override
             public boolean onQueryTextChange(String query) {
                 return true;
-
             }
-
         });
     }
 
     private void getUsersByQuery(String query) {
         Call<UserList> call = mFriendService.getUsersByQuery(query);
 
-        String x = "dd";
-        Log.d("Msg", "c");
         call.enqueue(new Callback<UserList>() {
             @Override
             public void onResponse(Call<UserList> call, Response<UserList> response) {
-                Log.d("Msg", "a");
                 List<User> a = response.body().getUserlist();
                 mUserAdapter.setDataList(a);
                 mUserAdapter.notifyDataSetChanged();
@@ -88,7 +79,7 @@ public class AddFriendFragment extends Fragment {
 
             @Override
             public void onFailure(Call<UserList> call, Throwable t) {
-                Log.d("Msg", "b");
+
             }
         });
     }
@@ -113,26 +104,6 @@ public class AddFriendFragment extends Fragment {
         mUserRecyclerView.setLayoutManager(layoutManager);
         mUserRecyclerView.setAdapter(mUserAdapter);
 
-        getFriendList();
-
         return rootview;
     }
-
-    private void getFriendList() {
-        Call<UserList> call = mFriendService.getMyFriends();
-
-        call.enqueue(new Callback<UserList>() {
-            @Override
-            public void onResponse(Call<UserList> call, Response<UserList> response) {
-                mUserAdapter.setDataList(response.body().getUserlist());
-                mUserAdapter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onFailure(Call<UserList> call, Throwable t) {
-
-            }
-        });
-    }
-
 }

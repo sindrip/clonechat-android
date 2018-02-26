@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
                 case 0:
                     return FriendFragment.newInstance();
                 case 1:
+//                    getSupportActionBar().hide();
                     return CameraFragment.newInstance();
                 case 2:
                     return SettingsFragment.newInstance();
