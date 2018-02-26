@@ -1,16 +1,22 @@
 package club.clonechat.clonechat.activity.main;
 
 
+import android.app.SearchManager;
+import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SearchView;
+import android.widget.SearchView.OnQueryTextListener;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -34,6 +40,8 @@ public class AddFriendFragment extends Fragment {
     private RecyclerView mUserRecyclerView;
     private UserAdapter mUserAdapter;
 
+
+
     public AddFriendFragment() {
         // Required empty public constructor
     }
@@ -41,6 +49,46 @@ public class AddFriendFragment extends Fragment {
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.menu_searchusers, menu);
+        /////
+        SearchView search = (SearchView) menu.findItem(R.id.search_users).getActionView();
+        // 9
+        search.setOnQueryTextListener(new OnQueryTextListener() {
+            /*/*/
+
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                Log.d("Msg",query);
+                getUsersByQuery(query);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String query) {
+                return true;
+
+            }
+
+        });
+    }
+
+    private void getUsersByQuery(String query) {
+        Call<UserList> call = mFriendService.getUsersByQuery(query);
+
+        String x = "dd";
+        Log.d("Msg", "c");
+        call.enqueue(new Callback<UserList>() {
+            @Override
+            public void onResponse(Call<UserList> call, Response<UserList> response) {
+                Log.d("Msg", "a");
+                mUserAdapter.setDataList(response.body().getUserlist());
+                mUserAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onFailure(Call<UserList> call, Throwable t) {
+                Log.d("Msg", "b");
+            }
+        });
     }
 
     @Override
