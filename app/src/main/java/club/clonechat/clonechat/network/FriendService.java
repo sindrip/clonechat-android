@@ -18,6 +18,9 @@ public interface FriendService {
     @GET("/users")
     Call<UserList>  getUsersByQuery(@Query("username") String username);
 
+
+    
+
     @GET("/users/me/friends")
     Call<UserList> getMyFriends();
 }
