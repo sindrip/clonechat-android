@@ -1,4 +1,4 @@
-package club.clonechat.clonechat_android.network;
+package club.clonechat.clonechat.network;
 
 import android.content.Context;
 
@@ -7,13 +7,13 @@ import com.franmontiel.persistentcookiejar.PersistentCookieJar;
 import com.franmontiel.persistentcookiejar.cache.SetCookieCache;
 import com.franmontiel.persistentcookiejar.persistence.SharedPrefsCookiePersistor;
 
-import club.clonechat.clonechat_android.R;
+import club.clonechat.clonechat.R;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
- * Created by sindrip on 21.2.2018.
+ * Created by sindrip on 26.2.2018.
  */
 
 public class RetrofitInstance {

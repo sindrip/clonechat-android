@@ -1,16 +1,18 @@
-package club.clonechat.clonechat_android.activity;
+package club.clonechat.clonechat.activity;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.Toast;
+import android.support.v7.app.AppCompatActivity;
 
-import club.clonechat.clonechat_android.R;
-import club.clonechat.clonechat_android.network.AuthService;
-import club.clonechat.clonechat_android.network.RetrofitInstance;
+import club.clonechat.clonechat.network.AuthService;
+import club.clonechat.clonechat.network.RetrofitInstance;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
+/**
+ * Created by sindrip on 26.2.2018.
+ */
 
 public class SplashScreen extends AppCompatActivity {
 
@@ -19,12 +21,11 @@ public class SplashScreen extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_splash_screen);
 
-        mAuthService = RetrofitInstance.getRetrofitInstance(getApplicationContext()).create(AuthService.class);
+        mAuthService = RetrofitInstance.getRetrofitInstance(getApplicationContext())
+                .create(AuthService.class);
 
         Call<Void> call = mAuthService.testLogin();
-
 
         call.enqueue(new Callback<Void>() {
             @Override
@@ -32,7 +33,7 @@ public class SplashScreen extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     startActivity(new Intent(SplashScreen.this, MainActivity.class));
                 } else {
-                    startActivity(new Intent(SplashScreen.this, WelcomeActivity.class));
+                    startActivity(new Intent(SplashScreen.this, AuthenticationActivity.class));
                 }
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                 finish();
@@ -40,9 +41,11 @@ public class SplashScreen extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
-                startActivity(new Intent(SplashScreen.this, WelcomeActivity.class));
+                startActivity(new Intent(SplashScreen.this, AuthenticationActivity.class));
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                 finish();
             }
         });
     }
+
 }

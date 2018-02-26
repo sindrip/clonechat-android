@@ -1,4 +1,4 @@
-package club.clonechat.clonechat_android;
+package club.clonechat.clonechat;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("club.clonechat.clonechat_android", appContext.getPackageName());
+        assertEquals("club.clonechat.clonechat", appContext.getPackageName());
     }
 }

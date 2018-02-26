@@ -1,4 +1,4 @@
-package club.clonechat.clonechat_android;
+package club.clonechat.clonechat;
 
 import org.junit.Test;
 

@@ -1,6 +1,6 @@
-package club.clonechat.clonechat_android.network;
+package club.clonechat.clonechat.network;
 
-import club.clonechat.clonechat_android.model.AuthUser;
+import club.clonechat.clonechat.model.AuthUser;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
@@ -8,7 +8,7 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 /**
- * Created by sindrip on 21.2.2018.
+ * Created by sindrip on 26.2.2018.
  */
 
 public interface AuthService {

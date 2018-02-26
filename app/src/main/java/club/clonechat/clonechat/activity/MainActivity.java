@@ -1,4 +1,4 @@
-package club.clonechat.clonechat_android.activity;
+package club.clonechat.clonechat.activity;
 
 import android.content.Intent;
 import android.support.v4.content.ContextCompat;
@@ -8,9 +8,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import club.clonechat.clonechat_android.R;
-import club.clonechat.clonechat_android.network.AuthService;
-import club.clonechat.clonechat_android.network.RetrofitInstance;
+import club.clonechat.clonechat.R;
+import club.clonechat.clonechat.network.AuthService;
+import club.clonechat.clonechat.network.RetrofitInstance;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(Call call, Response response) {
                         if (response.isSuccessful()) {
-                            startActivity(new Intent(MainActivity.this, WelcomeActivity.class));
+                            startActivity(new Intent(MainActivity.this, AuthenticationActivity.class));
                             finishAffinity();
                         } else {
                             Toast.makeText(getApplicationContext(), "Network error", Toast.LENGTH_SHORT).show();
@@ -87,6 +87,5 @@ public class MainActivity extends AppCompatActivity {
                 });
             }
         });
-
     }
 }

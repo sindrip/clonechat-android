@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">clonechat_android</string>
+    <string name="app_name">Clonechat</string>
 
     <string name="action_login">Login</string>
     <string name="action_register">Register</string>
@@ -12,4 +12,9 @@
     <string name="action_loginsuccess">Login was successful!</string>
     <string name="authentication_password_repeat">Repeat password</string>
     <string name="auth_error_password_not_match">Passwords do not match</string>
+    <string name="title_activity_authentication">AuthenticationActivity</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -1,9 +1,9 @@
-package club.clonechat.clonechat_android.model;
+package club.clonechat.clonechat.model;
 
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Created by sindrip on 21.2.2018.
+ * Created by sindrip on 26.2.2018.
  */
 
 public class AuthUser {
@@ -16,7 +16,6 @@ public class AuthUser {
         this.setUsername(username);
         this.setPassword(password);
     }
-
 
     public String getUsername() {
         return username;
