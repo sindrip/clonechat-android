@@ -6,11 +6,9 @@ import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
@@ -18,7 +16,6 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import club.clonechat.clonechat.R;
-import club.clonechat.clonechat.activity.authentcation.LoginFragment;
 import club.clonechat.clonechat.adapter.UserAdapter;
 import club.clonechat.clonechat.model.User;
 import club.clonechat.clonechat.model.UserList;
@@ -31,26 +28,19 @@ import retrofit2.Response;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class FriendFragment extends Fragment {
+public class AddFriendFragment extends Fragment {
 
-    private SwipeRefreshLayout mSwipeRefresh;
     private FriendService mFriendService;
     private RecyclerView mUserRecyclerView;
     private UserAdapter mUserAdapter;
 
-    public FriendFragment() {
+    public AddFriendFragment() {
         // Required empty public constructor
-    }
-
-    public static FriendFragment newInstance() {
-        FriendFragment fragment = new FriendFragment();
-        Bundle args = new Bundle();
-        return fragment;
     }
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.menu_addfriend, menu);
+        inflater.inflate(R.menu.menu_searchusers, menu);
     }
 
     @Override
@@ -66,7 +56,7 @@ public class FriendFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootview = inflater.inflate(R.layout.fragment_friend, container, false);
+        View rootview = inflater.inflate(R.layout.fragment_add_friend, container, false);
 
         mUserRecyclerView = (RecyclerView) rootview.findViewById(R.id.recycler_view_friend_list);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(rootview.getContext());
@@ -74,16 +64,6 @@ public class FriendFragment extends Fragment {
         mUserRecyclerView.setAdapter(mUserAdapter);
 
         getFriendList();
-
-        mSwipeRefresh = rootview.findViewById(R.id.friend_refreshswipe);
-        mSwipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                getFriendList();
-                Toast.makeText(getContext(), "Friendlist refreshed...", Toast.LENGTH_SHORT).show();
-                mSwipeRefresh.setRefreshing(false);
-            }
-        });
 
         return rootview;
     }
@@ -103,22 +83,6 @@ public class FriendFragment extends Fragment {
 
             }
         });
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item){
-        switch(item.getItemId()){
-            case R.id.add_friend: {
-                Log.d("Bjo", "clicked");
-                getFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.fragment_container_main, new AddFriendFragment())
-                        .addToBackStack(null)
-                        .commit();
-                return true;
-            }
-        }
-        return super.onOptionsItemSelected(item);
     }
 
 }
