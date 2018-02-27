@@ -6,7 +6,11 @@ import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
@@ -14,6 +18,8 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import club.clonechat.clonechat.R;
+import club.clonechat.clonechat.activity.MainActivity;
+import club.clonechat.clonechat.activity.authentcation.LoginFragment;
 import club.clonechat.clonechat.adapter.UserAdapter;
 import club.clonechat.clonechat.model.User;
 import club.clonechat.clonechat.model.UserList;
@@ -43,6 +49,10 @@ public class FriendFragment extends Fragment {
         return fragment;
     }
 
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.menu_addfriend, menu);
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -50,6 +60,8 @@ public class FriendFragment extends Fragment {
 
         mFriendService = RetrofitInstance.getRetrofitInstance(getContext()).create(FriendService.class);
         mUserAdapter = new UserAdapter(new ArrayList<User>());
+
+        setHasOptionsMenu(true);
     }
 
     @Override
@@ -92,6 +104,21 @@ public class FriendFragment extends Fragment {
 
             }
         });
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        switch(item.getItemId()){
+            case R.id.add_friend: {
+                getFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.fragment_main_overlay, new AddFriendFragment())
+                        .addToBackStack(null)
+                        .commit();
+                return true;
+            }
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 }
