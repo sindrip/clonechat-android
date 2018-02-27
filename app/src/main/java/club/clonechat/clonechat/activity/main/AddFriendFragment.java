@@ -61,6 +61,7 @@ public class AddFriendFragment extends Fragment {
 
             @Override
             public boolean onQueryTextChange(String query) {
+                getUsersByQuery(query);
                 return true;
             }
         });
@@ -72,8 +73,12 @@ public class AddFriendFragment extends Fragment {
         call.enqueue(new Callback<UserList>() {
             @Override
             public void onResponse(Call<UserList> call, Response<UserList> response) {
-                mUserAdapter.setDataList(response.body().getUserlist());
-                mUserAdapter.notifyDataSetChanged();
+                if (response.isSuccessful()) {
+                    mUserAdapter.setDataList(response.body().getUserlist());
+                    mUserAdapter.notifyDataSetChanged();
+                }
+                // If we send an empty string it returns an error
+                Log.d("Msg", Integer.toString(response.code()));
             }
 
             @Override
