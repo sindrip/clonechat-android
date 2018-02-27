@@ -53,6 +53,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
         holder.mUsername.setText(getDataList().get(position).getUsername());
         if (this.addUser) {
             // Implement onclick listener for button
+            holder.mDeleteFriend.setVisibility(View.GONE);
             holder.mAddUser.setOnClickListener(v -> {
                 System.out.println(holder.mUsername.getText());
                 Call call = mFriendService.addFriend(new User((String) holder.mUsername.getText()));
@@ -71,6 +72,21 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
             });
         } else {
             holder.mAddUser.setVisibility(View.GONE);
+            holder.mDeleteFriend.setOnClickListener(v -> {
+                Call call = mFriendService.deleteFriend(new User((String) holder.mUsername.getText()));
+
+                call.enqueue(new Callback() {
+                    @Override
+                    public void onResponse(Call call, Response response) {
+
+                    }
+
+                    @Override
+                    public void onFailure(Call call, Throwable t) {
+
+                    }
+                });
+            });
         }
     }
 
@@ -90,11 +106,13 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
     class UserViewHolder extends RecyclerView.ViewHolder {
         TextView mUsername;
         Button mAddUser;
+        Button mDeleteFriend;
 
         UserViewHolder(View itemView) {
             super(itemView);
             mUsername = (TextView) itemView.findViewById(R.id.card_username);
             mAddUser = (Button) itemView.findViewById(R.id.card_button);
+            mDeleteFriend = (Button) itemView.findViewById(R.id.card_button_deletefriend);
         }
     }
 }

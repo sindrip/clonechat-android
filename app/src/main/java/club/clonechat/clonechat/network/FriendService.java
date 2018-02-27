@@ -4,9 +4,11 @@ import club.clonechat.clonechat.model.User;
 import club.clonechat.clonechat.model.UserList;
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.HTTP;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
 
@@ -23,4 +25,7 @@ public interface FriendService {
 
     @POST("/users/me/friends")
     Call<Void> addFriend(@Body User user);
+
+    @HTTP(method = "DELETE", path="/users/me/friends", hasBody = true)
+    Call<Void> deleteFriend(@Body User user);
 }

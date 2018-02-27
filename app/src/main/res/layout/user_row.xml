@@ -26,6 +26,12 @@
             android:layout_height="match_parent"
             android:text="Add to friends!"/>
 
+        <Button
+            android:id="@+id/card_button_deletefriend"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Remove friend"/>
+
     </LinearLayout>
 
 </android.support.v7.widget.CardView>
