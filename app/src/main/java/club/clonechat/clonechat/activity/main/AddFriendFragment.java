@@ -52,6 +52,7 @@ public class AddFriendFragment extends Fragment {
         menu.clear();
         inflater.inflate(R.menu.menu_searchusers, menu);
         SearchView search = (SearchView) menu.findItem(R.id.search_users).getActionView();
+        ((SearchView) menu.findItem(R.id.search_users).getActionView()).setIconified(false);
         search.setOnQueryTextListener(new OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
