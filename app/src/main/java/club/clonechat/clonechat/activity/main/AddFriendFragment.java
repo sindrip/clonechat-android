@@ -72,8 +72,7 @@ public class AddFriendFragment extends Fragment {
         call.enqueue(new Callback<UserList>() {
             @Override
             public void onResponse(Call<UserList> call, Response<UserList> response) {
-                List<User> a = response.body().getUserlist();
-                mUserAdapter.setDataList(a);
+                mUserAdapter.setDataList(response.body().getUserlist());
                 mUserAdapter.notifyDataSetChanged();
             }
 
@@ -89,7 +88,7 @@ public class AddFriendFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         mFriendService = RetrofitInstance.getRetrofitInstance(getContext()).create(FriendService.class);
-        mUserAdapter = new UserAdapter(new ArrayList<User>());
+        mUserAdapter = new UserAdapter(new ArrayList<User>(), true);
 
         setHasOptionsMenu(true);
     }

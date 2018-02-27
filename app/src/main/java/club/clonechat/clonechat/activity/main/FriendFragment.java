@@ -18,6 +18,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import club.clonechat.clonechat.R;
+import club.clonechat.clonechat.activity.MainActivity;
 import club.clonechat.clonechat.activity.authentcation.LoginFragment;
 import club.clonechat.clonechat.adapter.UserAdapter;
 import club.clonechat.clonechat.model.User;
@@ -109,7 +110,6 @@ public class FriendFragment extends Fragment {
     public boolean onOptionsItemSelected(MenuItem item){
         switch(item.getItemId()){
             case R.id.add_friend: {
-                Log.d("Bjo", "clicked");
                 getFragmentManager()
                         .beginTransaction()
                         .replace(R.id.fragment_main_overlay, new AddFriendFragment())
