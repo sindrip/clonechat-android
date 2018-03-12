@@ -1,46 +1,57 @@
-<LinearLayout
-xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
-android:layout_height="wrap_content"
-android:orientation="vertical"
-android:layout_marginTop="180dp"
-tools:context="club.clonechat.clonechat.activity.authentcation.LoginFragment">
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.authentication.login.LoginFragment">
 
+    <data>
+        <variable
+            name="viewModel"
+            type="club.clonechat.clonechat.ui.authentication.login.LoginViewModel" />
+    </data>
 
-    <android.support.design.widget.TextInputLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
 
         <EditText
-            android:id="@+id/edittext_login_username"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/authentication_username"
+            android:layout_height="60dp"
+            android:hint="Username"
             android:inputType="text"
-            style="@style/TextInput"/>
-
-    </android.support.design.widget.TextInputLayout>
-
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+            android:singleLine="true"
+            android:text="@={viewModel.username}"/>
 
         <EditText
-            android:id="@+id/edittext_login_password"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/authentication_password"
+            android:layout_height="60dp"
+            android:hint="Password"
             android:inputType="textPassword"
-            style="@style/TextInput"/>
+            android:singleLine="true"
+            android:text="@={viewModel.password}"/>
+        
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="@{viewModel.username}" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="@{viewModel.password}" />
 
-    </android.support.design.widget.TextInputLayout>
 
-    <Button
-        android:id="@+id/button_login"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/action_login"
-        style="@style/LargeButton"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:text="Login"
+            android:enabled="@{!viewModel.loading}"
+            android:onClick="@{() -> viewModel.login()}"/>
 
-</LinearLayout>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:text="TestLogin"
+            android:onClick="@{() -> viewModel.testLogin()}"/>
+
+    </LinearLayout>
+</layout>

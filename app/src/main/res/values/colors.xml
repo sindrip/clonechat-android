@@ -3,10 +3,4 @@
     <color name="colorPrimary">#9189C7</color>
     <color name="colorPrimaryDark">#9189C7</color>
     <color name="colorAccent">#483E8D</color>
-    <color name="colorAuthBackground">#9189C7</color>\
-    <color name="colorBackground">#FFFFFF</color>\
-    <color name="colorText">#E4E1F5</color>
-
-    <color name="colorButtonBackground">#6960A9</color>
-    <color name="colorButtonDisabled">#BCB7E1</color>
 </resources>

@@ -1,21 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-tools:context="club.clonechat.clonechat.activity.MainActivity">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.main.MainActivity">
 
-    <android.support.v4.view.ViewPager
-        android:id="@+id/fragment_container_main"
-        android:layout_height="match_parent"
+    <data>
+        <variable
+            name="viewModel"
+            type="club.clonechat.clonechat.ui.main.MainViewModel" />
+    </data>
+
+    <FrameLayout
         android:layout_width="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+        android:layout_height="match_parent" >
 
-    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/fragment_main_overlay"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        <android.support.v4.view.ViewPager
+            android:id="@+id/main_viewpager"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent" />
 
-</FrameLayout>
+        <FrameLayout
+            android:id="@+id/main_overlay"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </FrameLayout>
+
+    </FrameLayout>
+</layout>

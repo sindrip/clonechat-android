@@ -1,33 +1,28 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="ui.authentication.welcome.welcomeFragment" >
 
-    <ImageView
-        android:id="@+id/logo"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
-        android:layout_above="@+id/button_open_login"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="36dp"
-        android:src="@drawable/logo_no_black_cropped" />
+    <data>
+        <variable
+            name="viewModel"
+            type="club.clonechat.clonechat.ui.authentication.welcome.WelcomeViewModel" />
+    </data>
 
-    <Button
-        android:id="@+id/button_open_login"
-        style="@style/HugeButton"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/button_open_register"
-        android:layout_alignParentStart="true"
-        android:text="@string/action_login" />
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
 
-    <Button
-        android:id="@+id/button_open_register"
-        style="@style/HugeButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:text="@string/action_register" />
-
-</RelativeLayout>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:text="Login"
+            android:onClick="@{() -> viewModel.getNavigator().goToLogin()}"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:text="Register"
+            android:onClick='@{() -> viewModel.getNavigator().goToRegister()}'/>
+    </LinearLayout>
+</layout>
