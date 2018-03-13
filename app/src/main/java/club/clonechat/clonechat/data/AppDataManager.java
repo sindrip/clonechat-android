@@ -9,17 +9,22 @@ import javax.inject.Inject;
 import club.clonechat.clonechat.data.api.NetworkResource;
 import club.clonechat.clonechat.data.repository.AuthRepository;
 import club.clonechat.clonechat.data.repository.FriendRepository;
+import club.clonechat.clonechat.data.repository.ImageRepository;
 import club.clonechat.clonechat.data.ui.model.User;
 
 public class AppDataManager implements DataManager {
 
     private final AuthRepository mAuthRepository;
     private final FriendRepository mFriendRepository;
+    private final ImageRepository mImageRepository;
 
     @Inject
-    public AppDataManager(AuthRepository authRepository, FriendRepository friendRepository) {
+    public AppDataManager(AuthRepository authRepository,
+                          FriendRepository friendRepository,
+                          ImageRepository imageRepository) {
         this.mAuthRepository = authRepository;
         this.mFriendRepository = friendRepository;
+        this.mImageRepository = imageRepository;
     }
 
     @Override
@@ -90,6 +95,26 @@ public class AppDataManager implements DataManager {
     @Override
     public void addFriend(String username) {
         mFriendRepository.addFriend(username);
+    }
+
+    @Override
+    public LiveData<Boolean> getTakePhoto() {
+        return mImageRepository.getTakePhoto();
+    }
+
+    @Override
+    public void setTakePhotoValue(boolean v) {
+        mImageRepository.setTakePhotoValue(v);
+    }
+
+    @Override
+    public LiveData<byte[]> getPhotoBytes() {
+        return mImageRepository.getPhotoBytes();
+    }
+
+    @Override
+    public void setPhotoBytes(byte[] photo) {
+        mImageRepository.setPhotoBytes(photo);
     }
 
 }

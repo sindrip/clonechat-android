@@ -36,4 +36,14 @@ public interface DataManager {
 
     void deleteFriend(String username);
     void addFriend(String username);
+
+    // ======================================================
+    // =================== ImageRepository ==================
+    // ======================================================
+    LiveData<Boolean> getTakePhoto();
+    void setTakePhotoValue(boolean v);
+
+    LiveData<byte[]> getPhotoBytes();
+
+    void setPhotoBytes(byte[] photo);
 }

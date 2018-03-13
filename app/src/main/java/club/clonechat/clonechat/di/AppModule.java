@@ -18,6 +18,7 @@ import club.clonechat.clonechat.data.api.retrofit.AuthService;
 import club.clonechat.clonechat.data.api.retrofit.FriendService;
 import club.clonechat.clonechat.data.repository.AuthRepository;
 import club.clonechat.clonechat.data.repository.FriendRepository;
+import club.clonechat.clonechat.data.repository.ImageRepository;
 import dagger.Binds;
 import dagger.Module;
 import dagger.Provides;
@@ -77,6 +78,12 @@ abstract class AppModule {
     @Singleton
     static FriendRepository provideFriendRepository(FriendService friendService) {
         return new FriendRepository(friendService);
+    }
+
+    @Provides
+    @Singleton
+    static ImageRepository provideImageRepository() {
+        return new ImageRepository();
     }
 
     @Provides
