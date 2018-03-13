@@ -6,6 +6,6 @@ import dagger.android.ContributesAndroidInjector;
 @Module
 public abstract class ImagePreviewFragmentProvider {
 
-    @ContributesAndroidInjector(modules = ImagePreviewModule.class)
+    @ContributesAndroidInjector(modules = ImagePreviewFragmentModule.class)
     abstract ImagePreviewFragment provideImagePreviewFragmentFactory();
 }

@@ -10,7 +10,7 @@ import dagger.Module;
 import dagger.Provides;
 
 @Module
-public class ImagePreviewModule {
+public class ImagePreviewFragmentModule {
 
     @Provides
     ImagePreviewViewModel provideImagePreviewViewModel(DataManager dataManager) {

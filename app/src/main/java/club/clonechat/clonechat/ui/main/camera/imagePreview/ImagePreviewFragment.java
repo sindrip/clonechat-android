@@ -7,6 +7,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,11 +20,12 @@ import club.clonechat.clonechat.BR;
 import club.clonechat.clonechat.R;
 import club.clonechat.clonechat.databinding.FragmentImagePreviewBinding;
 import club.clonechat.clonechat.ui.base.BaseFragment;
+import club.clonechat.clonechat.ui.main.camera.sendImage.SendImageFragment;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ImagePreviewFragment extends BaseFragment<FragmentImagePreviewBinding, ImagePreviewViewModel> {
+public class ImagePreviewFragment extends BaseFragment<FragmentImagePreviewBinding, ImagePreviewViewModel> implements ImagePreviewNavigator {
 
     @Inject
     @Named("ImagePreviewFragment")
@@ -56,6 +58,12 @@ public class ImagePreviewFragment extends BaseFragment<FragmentImagePreviewBindi
     }
 
     @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mImagePreviewViewModel.setNavigator(this);
+    }
+
+    @Override
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mFragmentImagePreviewBinding = getViewDataBinding();
@@ -81,4 +89,12 @@ public class ImagePreviewFragment extends BaseFragment<FragmentImagePreviewBindi
         });
     }
 
+    @Override
+    public void goToSendImage() {
+        getBaseActivity().getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.main_overlay, SendImageFragment.newInstance())
+                .addToBackStack(null)
+                .commit();
+    }
 }
