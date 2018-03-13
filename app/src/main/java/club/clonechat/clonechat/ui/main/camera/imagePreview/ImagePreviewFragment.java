@@ -62,6 +62,12 @@ public class ImagePreviewFragment extends BaseFragment<FragmentImagePreviewBindi
         setUp();
     }
 
+    @Override
+    public void onDestroy() {
+        mImagePreviewViewModel.deleteImage();
+        super.onDestroy();
+    }
+
     private void setUp() {
         observePhotoBytes();
     }

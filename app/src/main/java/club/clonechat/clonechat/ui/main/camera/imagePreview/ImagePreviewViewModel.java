@@ -15,6 +15,10 @@ public class ImagePreviewViewModel extends BaseViewModel {
         photoBytes = getDataManager().getPhotoBytes();
     }
 
+    public void deleteImage() {
+        getDataManager().setPhotoBytes(new byte[]{});
+    }
+
     public LiveData<byte[]> getPhotoBytes() {
         return photoBytes;
     }
