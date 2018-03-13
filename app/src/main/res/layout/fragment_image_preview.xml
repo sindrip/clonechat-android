@@ -7,7 +7,7 @@
             type="club.clonechat.clonechat.ui.main.camera.imagePreview.ImagePreviewViewModel" />
     </data>
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#ffffff">
@@ -16,6 +16,14 @@
             android:id="@+id/imagepreview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:adjustViewBounds="true"/>
-    </LinearLayout>
+            android:adjustViewBounds="true" />
+
+        <Button
+            android:id="@+id/gotosendimage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center"
+            android:text="SEND"
+            />
+    </FrameLayout>
 </layout>
