@@ -46,4 +46,7 @@ public interface DataManager {
     LiveData<byte[]> getPhotoBytes();
 
     void setPhotoBytes(byte[] photo);
+
+    LiveData<List<User>> getSendList();
+    void setSendList(List<User> userList);
 }
