@@ -5,6 +5,13 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.wonderkiln.camerakit.CameraKitError;
+import com.wonderkiln.camerakit.CameraKitEvent;
+import com.wonderkiln.camerakit.CameraKitEventListener;
+import com.wonderkiln.camerakit.CameraKitImage;
+import com.wonderkiln.camerakit.CameraKitVideo;
+import com.wonderkiln.camerakit.CameraView;
+
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -43,6 +50,18 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        mActivityMainBinding.camera.start();
+    }
+
+    @Override
+    public void onPause() {
+        mActivityMainBinding.camera.stop();
+        super.onPause();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mActivityMainBinding = getViewDataBinding();
@@ -58,6 +77,27 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
         mActivityMainBinding.mainViewpager.setAdapter(mPagerAdapter);
         mActivityMainBinding.mainViewpager.setCurrentItem(1);
         mActivityMainBinding.mainViewpager.setPageTransformer(true, mDepthPageTransformer);
+        mActivityMainBinding.camera.addCameraKitListener(new CameraKitEventListener() {
+            @Override
+            public void onEvent(CameraKitEvent cameraKitEvent) {
+
+            }
+
+            @Override
+            public void onError(CameraKitError cameraKitError) {
+
+            }
+
+            @Override
+            public void onImage(CameraKitImage cameraKitImage) {
+
+            }
+
+            @Override
+            public void onVideo(CameraKitVideo cameraKitVideo) {
+
+            }
+        });
     }
 
     private void observeLoggedIn() {
