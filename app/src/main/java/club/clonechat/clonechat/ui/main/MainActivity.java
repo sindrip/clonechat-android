@@ -4,7 +4,9 @@ import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 
+import com.wonderkiln.camerakit.CameraKit;
 import com.wonderkiln.camerakit.CameraKitError;
 import com.wonderkiln.camerakit.CameraKitEvent;
 import com.wonderkiln.camerakit.CameraKitEventListener;
@@ -20,6 +22,8 @@ import club.clonechat.clonechat.R;
 import club.clonechat.clonechat.databinding.ActivityMainBinding;
 import club.clonechat.clonechat.ui.authentication.AuthenticationActivity;
 import club.clonechat.clonechat.ui.base.BaseActivity;
+import club.clonechat.clonechat.ui.main.camera.imagePreview.ImagePreviewFragment;
+import club.clonechat.clonechat.ui.main.friends.addFriend.AddFriendFragment;
 
 public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewModel> implements MainNavigator{
 
@@ -65,18 +69,25 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mActivityMainBinding = getViewDataBinding();
+        mActivityMainBinding.camera.setMethod(CameraKit.Constants.METHOD_STILL);
         setUp();
     }
 
     private void setUp() {
         bindPagerAdapter();
         observeLoggedIn();
+        bindCameraListener();
+        observeTakePhoto();
     }
 
     private void bindPagerAdapter() {
         mActivityMainBinding.mainViewpager.setAdapter(mPagerAdapter);
         mActivityMainBinding.mainViewpager.setCurrentItem(1);
         mActivityMainBinding.mainViewpager.setPageTransformer(true, mDepthPageTransformer);
+
+    }
+
+    private void bindCameraListener() {
         mActivityMainBinding.camera.addCameraKitListener(new CameraKitEventListener() {
             @Override
             public void onEvent(CameraKitEvent cameraKitEvent) {
@@ -90,7 +101,11 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
 
             @Override
             public void onImage(CameraKitImage cameraKitImage) {
+                Log.d("frag", "Image captured");
+                mMainViewModel.takePhotoEventCaught();
 
+                Log.d("frag", String.valueOf(cameraKitImage.getJpeg().length));
+                mMainViewModel.setPhotoBytes(cameraKitImage.getJpeg());
             }
 
             @Override
@@ -104,6 +119,19 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
         mMainViewModel.getIsLoggedIn().observe(this, data -> {
             if (!data) {
                 openAuthenticationActivity();
+            }
+        });
+    }
+
+    private void observeTakePhoto() {
+        mMainViewModel.getTakePhoto().observe(this, data -> {
+            Log.d("frag", String.valueOf(data));
+            if (data) {
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.main_overlay, ImagePreviewFragment.newInstance())
+                        .addToBackStack(null)
+                        .commit();
+                mActivityMainBinding.camera.captureImage();
             }
         });
     }
