@@ -103,6 +103,11 @@ public class AppDataManager implements DataManager {
     }
 
     @Override
+    public void setTakePhotoValue(boolean v) {
+        mImageRepository.setTakePhotoValue(v);
+    }
+
+    @Override
     public LiveData<byte[]> getPhotoBytes() {
         return mImageRepository.getPhotoBytes();
     }

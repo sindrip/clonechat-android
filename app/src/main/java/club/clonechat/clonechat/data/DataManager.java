@@ -41,6 +41,8 @@ public interface DataManager {
     // =================== ImageRepository ==================
     // ======================================================
     LiveData<Boolean> getTakePhoto();
+    void setTakePhotoValue(boolean v);
+
     LiveData<byte[]> getPhotoBytes();
 
     void setPhotoBytes(byte[] photo);

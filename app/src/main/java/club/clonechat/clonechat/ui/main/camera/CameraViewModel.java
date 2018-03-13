@@ -8,4 +8,8 @@ public class CameraViewModel extends BaseViewModel {
     public CameraViewModel(DataManager dataManager) {
         super(dataManager);
     }
+
+    public void takePhoto() {
+        getDataManager().setTakePhotoValue(true);
+    }
 }

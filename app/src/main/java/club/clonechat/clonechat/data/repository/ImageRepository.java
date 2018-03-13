@@ -20,6 +20,10 @@ public class ImageRepository {
         this.mPhotoBytes.setValue(photo);
     }
 
+    public void setTakePhotoValue(boolean v) {
+        this.mTakePhoto.setValue(v);
+    }
+
     public LiveData<Boolean> getTakePhoto() {
         return mTakePhoto;
     }
