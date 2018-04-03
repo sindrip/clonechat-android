@@ -2,14 +2,26 @@ package club.clonechat.clonechat.data.repository;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
+import android.util.Log;
+
+import club.clonechat.clonechat.data.api.retrofit.ImageService;
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ImageRepository {
+
+    private final ImageService mImageService;
 
     private final MutableLiveData<Boolean> mTakePhoto;
 
     private final MutableLiveData<byte[]> mPhotoBytes;
 
-    public ImageRepository() {
+    public ImageRepository(ImageService imageService) {
+        this.mImageService = imageService;
+
         this.mTakePhoto = new MutableLiveData<>();
         this.mTakePhoto.setValue(false);
 
@@ -30,5 +42,27 @@ public class ImageRepository {
 
     public LiveData<byte[]> getPhotoBytes() {
         return mPhotoBytes;
+    }
+
+    public void uploadPhoto() {
+        RequestBody image = RequestBody.create(MediaType.parse("image/*"), mPhotoBytes.getValue());
+        mImageService.uploadImage(image).enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                if (response.isSuccessful()) {
+                    Log.d("frag", "is done");
+                } else {
+                    Log.d("frag", "some fail");
+                    Log.d("frag", response.toString());
+                    // error handling?
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                // error handling?
+                Log.d("frag", "some other fail");
+            }
+        });
     }
 }

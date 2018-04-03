@@ -72,13 +72,7 @@ public class SendFriendAdapter extends RecyclerView.Adapter<BaseViewHolder> {
         public void onButtonClick(String username) {
             if (username != null) {
                 Log.d("frag", username);
-//                if (isFriend) {
-//                    Log.d("frag", "friend " + username);
-//                    mDataManager.deleteFriend(username);
-//                } else {
-//                    Log.d("frag", "nofriend " + username);
-//                    mDataManager.addFriend(username);
-//                }
+                mDataManager.uploadPhoto();
             }
         }
     }

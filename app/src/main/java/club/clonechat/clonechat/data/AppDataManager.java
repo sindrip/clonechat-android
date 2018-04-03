@@ -117,4 +117,9 @@ public class AppDataManager implements DataManager {
         mImageRepository.setPhotoBytes(photo);
     }
 
+    @Override
+    public void uploadPhoto() {
+        mImageRepository.uploadPhoto();
+    }
+
 }

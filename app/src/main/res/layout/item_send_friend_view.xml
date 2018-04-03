@@ -28,7 +28,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#42F445"
-                android:text="Send" />
+                android:text="Send"
+                android:onClick="@{() -> viewModel.onButtonClick()}"/>
 
 
         </LinearLayout>
