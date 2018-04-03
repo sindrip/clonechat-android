@@ -18,6 +18,8 @@ import club.clonechat.clonechat.ui.main.camera.sendImage.SendImageFragmentProvid
 import club.clonechat.clonechat.ui.main.friends.FriendFragmentProvider;
 import club.clonechat.clonechat.ui.main.friends.addFriend.AddFriendFragmentProvider;
 import club.clonechat.clonechat.ui.main.messages.MessageFragmentProvider;
+import club.clonechat.clonechat.ui.main.messages.imageView.ImageViewFragment;
+import club.clonechat.clonechat.ui.main.messages.imageView.ImageViewFragmentProvider;
 import club.clonechat.clonechat.ui.splash.SplashActivity;
 import club.clonechat.clonechat.ui.splash.SplashActivityModule;
 import dagger.Module;
@@ -40,7 +42,8 @@ public abstract class ActivityBuilder {
             FriendFragmentProvider.class,
             AddFriendFragmentProvider.class,
             ImagePreviewFragmentProvider.class,
-            SendImageFragmentProvider.class})
+            SendImageFragmentProvider.class,
+            ImageViewFragmentProvider.class})
     abstract MainActivity bindMainActivity();
 
     @ContributesAndroidInjector(modules = {

@@ -12,6 +12,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.util.Log;
 import android.view.View;
 
+import com.squareup.picasso.Picasso;
+
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -19,6 +21,7 @@ import club.clonechat.clonechat.BR;
 import club.clonechat.clonechat.R;
 import club.clonechat.clonechat.databinding.FragmentMessageBinding;
 import club.clonechat.clonechat.ui.base.BaseFragment;
+import club.clonechat.clonechat.ui.main.messages.imageView.ImageViewFragment;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -79,12 +82,25 @@ public class MessageFragment extends BaseFragment<FragmentMessageBinding, Messag
         mFragmentMessageBinding.messageRecyclerView.setItemAnimator(new DefaultItemAnimator());
         mFragmentMessageBinding.messageRecyclerView.setAdapter(mMessageAdapter);
         observeMessageList();
+        observeImageUrl();
     }
 
     private void observeMessageList() {
         mMessageViewModel.getMessagelist().observe(this, m -> {
             mMessageAdapter.newItems(m);
             mFragmentMessageBinding.messageSwipeRefresh.setRefreshing(false);
+        });
+    }
+
+    private void observeImageUrl() {
+        mMessageViewModel.getImageUrl().observe(this, url -> {
+            if (!url.equals("")){
+                getBaseActivity().getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.main_overlay, ImageViewFragment.newInstance())
+                        .addToBackStack(null)
+                        .commit();
+            }
         });
     }
 

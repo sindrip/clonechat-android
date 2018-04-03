@@ -59,4 +59,7 @@ public interface DataManager {
     LiveData<List<Message>> getMessageList();
     void refreshMessageList();
 
+    LiveData<String> getImageURL();
+    void setImageURL(String imageURL);
+
 }

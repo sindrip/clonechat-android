@@ -19,11 +19,25 @@ public class MessageRepository {
 
     private final MutableLiveData<List<Message>> messagelist;
 
+    private final MutableLiveData<String> imageURL;
+
+
     public MessageRepository(MessageService messageService) {
         this.mMessageService = messageService;
 
         this.messagelist = new MutableLiveData<>();
         this.messagelist.setValue(new ArrayList<>());
+
+        this.imageURL = new MutableLiveData<>();
+        this.imageURL.setValue("");
+    }
+
+    public void setImageURL(String imageurl) {
+        imageURL.setValue(imageurl);
+    }
+
+    public LiveData<String> getImageURL() {
+        return imageURL;
     }
 
     public LiveData<List<Message>> getMessageList() {

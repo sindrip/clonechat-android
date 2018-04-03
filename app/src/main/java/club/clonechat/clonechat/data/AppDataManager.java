@@ -147,4 +147,14 @@ public class AppDataManager implements DataManager {
         mMessageRepository.refreshMessageList();
     }
 
+    @Override
+    public LiveData<String> getImageURL() {
+        return mMessageRepository.getImageURL();
+    }
+
+    @Override
+    public void setImageURL(String imageURL) {
+        mMessageRepository.setImageURL(imageURL);
+    }
+
 }
