@@ -118,13 +118,8 @@ public class AppDataManager implements DataManager {
     }
 
     @Override
-    public LiveData<List<User>> getSendList() {
-        return mImageRepository.getSendList();
-    }
-
-    @Override
-    public void setSendList(List<User> userList) {
-        mImageRepository.setSendList(userList);
+    public void uploadPhoto() {
+        mImageRepository.uploadPhoto();
     }
 
 }
