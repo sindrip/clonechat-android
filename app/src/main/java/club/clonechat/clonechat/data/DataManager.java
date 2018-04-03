@@ -46,4 +46,9 @@ public interface DataManager {
     LiveData<byte[]> getPhotoBytes();
 
     void setPhotoBytes(byte[] photo);
+
+    void uploadPhoto(String username);
+
+    LiveData<Boolean> getUploadStart();
+    void setUploadStartFalse();
 }

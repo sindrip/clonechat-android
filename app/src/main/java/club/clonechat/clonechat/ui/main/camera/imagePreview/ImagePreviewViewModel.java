@@ -5,7 +5,7 @@ import android.arch.lifecycle.LiveData;
 import club.clonechat.clonechat.data.DataManager;
 import club.clonechat.clonechat.ui.base.BaseViewModel;
 
-public class ImagePreviewViewModel extends BaseViewModel {
+public class ImagePreviewViewModel extends BaseViewModel<ImagePreviewNavigator> {
 
     private LiveData<byte[]> photoBytes;
 

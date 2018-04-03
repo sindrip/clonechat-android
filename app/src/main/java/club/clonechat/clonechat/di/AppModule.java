@@ -16,6 +16,8 @@ import club.clonechat.clonechat.data.AppDataManager;
 import club.clonechat.clonechat.data.DataManager;
 import club.clonechat.clonechat.data.api.retrofit.AuthService;
 import club.clonechat.clonechat.data.api.retrofit.FriendService;
+import club.clonechat.clonechat.data.api.retrofit.ImageService;
+import club.clonechat.clonechat.data.api.retrofit.MessageService;
 import club.clonechat.clonechat.data.repository.AuthRepository;
 import club.clonechat.clonechat.data.repository.FriendRepository;
 import club.clonechat.clonechat.data.repository.ImageRepository;
@@ -82,8 +84,20 @@ abstract class AppModule {
 
     @Provides
     @Singleton
-    static ImageRepository provideImageRepository() {
-        return new ImageRepository();
+    static ImageService provideImageService(Retrofit retrofit) {
+        return retrofit.create(ImageService.class);
+    }
+
+    @Provides
+    @Singleton
+    static ImageRepository provideImageRepository(ImageService imageService, MessageService messageService) {
+        return new ImageRepository(imageService, messageService);
+    }
+
+    @Provides
+    @Singleton
+    static MessageService provideMessageService(Retrofit retrofit) {
+        return retrofit.create(MessageService.class);
     }
 
     @Provides
