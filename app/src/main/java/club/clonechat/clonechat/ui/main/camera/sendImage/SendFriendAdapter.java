@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import club.clonechat.clonechat.data.DataManager;
@@ -71,7 +72,15 @@ public class SendFriendAdapter extends RecyclerView.Adapter<BaseViewHolder> {
         @Override
         public void onButtonClick(String username) {
             if (username != null) {
-                Log.d("frag", username);
+                List removedList = new ArrayList();
+                for(User u : mFriendList){
+                    if(u.getUsername() == username) {
+                        removedList.add(u);
+                    }
+                }
+                mFriendList.removeAll(removedList);
+                notifyDataSetChanged();
+
                 mDataManager.uploadPhoto(username);
             }
         }
