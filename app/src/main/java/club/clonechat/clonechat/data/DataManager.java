@@ -5,6 +5,7 @@ import android.arch.lifecycle.LiveData;
 import java.util.List;
 
 import club.clonechat.clonechat.data.api.NetworkResource;
+import club.clonechat.clonechat.data.ui.model.Message;
 import club.clonechat.clonechat.data.ui.model.User;
 
 public interface DataManager {
@@ -51,4 +52,11 @@ public interface DataManager {
 
     LiveData<Boolean> getUploadStart();
     void setUploadStartFalse();
+
+    // ======================================================
+    // =================== MessageRepository ================
+    // ======================================================
+    LiveData<List<Message>> getMessageList();
+    void refreshMessageList();
+
 }

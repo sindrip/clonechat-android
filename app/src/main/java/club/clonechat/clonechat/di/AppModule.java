@@ -21,6 +21,7 @@ import club.clonechat.clonechat.data.api.retrofit.MessageService;
 import club.clonechat.clonechat.data.repository.AuthRepository;
 import club.clonechat.clonechat.data.repository.FriendRepository;
 import club.clonechat.clonechat.data.repository.ImageRepository;
+import club.clonechat.clonechat.data.repository.MessageRepository;
 import dagger.Binds;
 import dagger.Module;
 import dagger.Provides;
@@ -98,6 +99,12 @@ abstract class AppModule {
     @Singleton
     static MessageService provideMessageService(Retrofit retrofit) {
         return retrofit.create(MessageService.class);
+    }
+
+    @Provides
+    @Singleton
+    static MessageRepository provideMessageRepository(MessageService messageService) {
+        return new MessageRepository(messageService);
     }
 
     @Provides

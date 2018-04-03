@@ -10,7 +10,6 @@ public class UserList {
     @SerializedName("userlist")
     private List<User> mUserlist;
 
-
     public List<User> getUserlist() {
         return mUserlist;
     }
