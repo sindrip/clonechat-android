@@ -9,11 +9,13 @@ public class MainViewModel extends BaseViewModel {
 
     private LiveData<Boolean> isLoggedIn;
     private LiveData<Boolean> takePhoto;
+    private LiveData<Boolean> uploadStart;
 
     public MainViewModel(DataManager dataManager) {
         super(dataManager);
         isLoggedIn = getDataManager().getIsLoggedIn();
         takePhoto = getDataManager().getTakePhoto();
+        uploadStart = getDataManager().getUploadStart();
     }
 
     public void takePhotoEventCaught() {
@@ -28,4 +30,8 @@ public class MainViewModel extends BaseViewModel {
         return isLoggedIn;
     }
     public LiveData<Boolean> getTakePhoto() { return takePhoto; }
+    public LiveData<Boolean> getUploadStart() { return uploadStart; }
+    public void setUploadStartFalse() {
+        getDataManager().setUploadStartFalse();
+    }
 }

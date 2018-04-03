@@ -1,5 +1,7 @@
 package club.clonechat.clonechat.data.api.retrofit;
 
+import club.clonechat.clonechat.data.api.model.ImageResponse;
+import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Multipart;
@@ -10,5 +12,5 @@ public interface ImageService {
 
     @Multipart
     @POST("images")
-    Call<Void> uploadImage(@Part("image")RequestBody image);
+    Call<ImageResponse> uploadImage(@Part MultipartBody.Part image);
 }

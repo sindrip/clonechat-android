@@ -72,7 +72,7 @@ public class SendFriendAdapter extends RecyclerView.Adapter<BaseViewHolder> {
         public void onButtonClick(String username) {
             if (username != null) {
                 Log.d("frag", username);
-                mDataManager.uploadPhoto();
+                mDataManager.uploadPhoto(username);
             }
         }
     }

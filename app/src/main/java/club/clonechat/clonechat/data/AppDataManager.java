@@ -118,8 +118,18 @@ public class AppDataManager implements DataManager {
     }
 
     @Override
-    public void uploadPhoto() {
-        mImageRepository.uploadPhoto();
+    public void uploadPhoto(String username) {
+        mImageRepository.uploadPhoto(username);
+    }
+
+    @Override
+    public LiveData<Boolean> getUploadStart() {
+        return mImageRepository.getUploadStart();
+    }
+
+    @Override
+    public void setUploadStartFalse() {
+        mImageRepository.setUploadStartFalse();
     }
 
 }
