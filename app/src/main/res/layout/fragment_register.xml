@@ -12,51 +12,33 @@ tools:context=".ui.authentication.register.RegisterFragment">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical" >
+        android:orientation="vertical"
+        android:background="@color/colorPrimary"
+        android:paddingTop="50dp">
 
         <EditText
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
+            style="@style/InputField"
             android:hint="Username"
             android:inputType="text"
-            android:singleLine="true"
             android:text="@={viewModel.username}"/>
 
         <EditText
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
+            style="@style/InputField"
             android:hint="Password"
             android:inputType="textPassword"
-            android:singleLine="true"
             android:text="@={viewModel.password}"/>
 
         <EditText
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
+            style="@style/InputField"
             android:hint="Confirm Password"
             android:inputType="textPassword"
-            android:singleLine="true"
             android:text="@={viewModel.passwordConfirm}"/>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:text="@{viewModel.username}" />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:text="@{viewModel.password}" />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:text="@{viewModel.passwordConfirm}" />
-
         <Button
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
+            style="@style/BigButton"
             android:text="Register"
             android:enabled="@{!viewModel.loading}"
-            android:onClick="@{() -> viewModel.register()}"/>
+            android:onClick="@{() -> viewModel.register()}" />
 
     </LinearLayout>
 </layout>
