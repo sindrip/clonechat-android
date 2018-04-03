@@ -10,6 +10,8 @@ import club.clonechat.clonechat.data.api.NetworkResource;
 import club.clonechat.clonechat.data.repository.AuthRepository;
 import club.clonechat.clonechat.data.repository.FriendRepository;
 import club.clonechat.clonechat.data.repository.ImageRepository;
+import club.clonechat.clonechat.data.repository.MessageRepository;
+import club.clonechat.clonechat.data.ui.model.Message;
 import club.clonechat.clonechat.data.ui.model.User;
 
 public class AppDataManager implements DataManager {
@@ -17,14 +19,17 @@ public class AppDataManager implements DataManager {
     private final AuthRepository mAuthRepository;
     private final FriendRepository mFriendRepository;
     private final ImageRepository mImageRepository;
+    private final MessageRepository mMessageRepository;
 
     @Inject
     public AppDataManager(AuthRepository authRepository,
                           FriendRepository friendRepository,
-                          ImageRepository imageRepository) {
+                          ImageRepository imageRepository,
+                          MessageRepository messageRepository) {
         this.mAuthRepository = authRepository;
         this.mFriendRepository = friendRepository;
         this.mImageRepository = imageRepository;
+        this.mMessageRepository = messageRepository;
     }
 
     @Override
@@ -130,6 +135,16 @@ public class AppDataManager implements DataManager {
     @Override
     public void setUploadStartFalse() {
         mImageRepository.setUploadStartFalse();
+    }
+
+    @Override
+    public LiveData<List<Message>> getMessageList() {
+        return mMessageRepository.getMessageList();
+    }
+
+    @Override
+    public void refreshMessageList() {
+        mMessageRepository.refreshMessageList();
     }
 
 }

@@ -2,6 +2,8 @@ package club.clonechat.clonechat.ui.main.messages;
 
 import android.arch.lifecycle.ViewModelProvider;
 
+import java.util.ArrayList;
+
 import javax.inject.Named;
 
 import club.clonechat.clonechat.data.DataManager;
@@ -21,5 +23,11 @@ public class MessageFragmentModule {
     @Named("MessageFragment")
     ViewModelProvider.Factory provideCameraViewModelFactory(MessageViewModel messageViewModel) {
         return new ViewModelProviderFactory<>(messageViewModel);
+    }
+
+    @Provides
+    @Named("MessageFragment")
+    MessageAdapter provideMessageAdapter(DataManager dataManager) {
+        return new MessageAdapter(dataManager, new ArrayList<>());
     }
 }
