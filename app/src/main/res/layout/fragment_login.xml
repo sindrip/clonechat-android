@@ -18,19 +18,19 @@
 
         <EditText
             style="@style/InputField"
-            android:hint="Username"
+            android:hint="@string/username_hint"
             android:inputType="text"
             android:text="@={viewModel.username}"/>
 
         <EditText
             style="@style/InputField"
-            android:hint="Password"
+            android:hint="@string/password_hint"
             android:inputType="textPassword"
             android:text="@={viewModel.password}"/>
 
         <Button
             style="@style/BigButton"
-            android:text="Login"
+            android:text="@string/login"
             android:enabled="@{!viewModel.loading}"
             android:onClick="@{() -> viewModel.login()}"/>
 

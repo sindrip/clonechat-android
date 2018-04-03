@@ -18,25 +18,25 @@ tools:context=".ui.authentication.register.RegisterFragment">
 
         <EditText
             style="@style/InputField"
-            android:hint="Username"
+            android:hint="@string/username_hint"
             android:inputType="text"
             android:text="@={viewModel.username}"/>
 
         <EditText
             style="@style/InputField"
-            android:hint="Password"
+            android:hint="@string/password_hint"
             android:inputType="textPassword"
             android:text="@={viewModel.password}"/>
 
         <EditText
             style="@style/InputField"
-            android:hint="Confirm Password"
+            android:hint="@string/password_confirm"
             android:inputType="textPassword"
             android:text="@={viewModel.passwordConfirm}"/>
 
         <Button
             style="@style/BigButton"
-            android:text="Register"
+            android:text="@string/register"
             android:enabled="@{!viewModel.loading}"
             android:onClick="@{() -> viewModel.register()}" />
 

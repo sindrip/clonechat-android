@@ -11,35 +11,34 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         card_view:cardElevation="3dp"
-        card_view:cardUseCompatPadding="true">
+        card_view:cardUseCompatPadding="true"
+        card_view:cardBackgroundColor="@color/colorPrimaryLight">
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_margin="5dp"
-            android:orientation="vertical"
-            android:padding="5dp">
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:orientation="horizontal">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/FriendItem"
                 android:text="@{viewModel.user.username}"/>
 
             <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="#42F445"
-                android:text="Add :)"
+                style="@style/AddDeleteButton"
+                android:text="@string/add_friend"
+                android:background="#2dc630"
                 android:visibility="@{viewModel.isFriend ? View.GONE : View.VISIBLE}"
                 android:onClick="@{() -> viewModel.onButtonClick()}"/>
 
             <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="#F45341"
-                android:text="Delete :("
+                style="@style/AddDeleteButton"
+                android:background="#e65042"
+                android:text="@string/delete_friend"
                 android:visibility="@{viewModel.isFriend ? View.VISIBLE : View.GONE}"
                 android:onClick="@{() -> viewModel.onButtonClick()}"/>
-
 
         </LinearLayout>
 

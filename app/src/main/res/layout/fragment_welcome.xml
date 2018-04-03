@@ -19,11 +19,11 @@
 
         <Button
             style="@style/BigButton"
-            android:text="Login"
+            android:text="@string/login"
             android:onClick="@{() -> viewModel.getNavigator().goToLogin()}" />
         <Button
             style="@style/BigButton"
-            android:text="Register"
+            android:text="@string/register"
             android:onClick='@{() -> viewModel.getNavigator().goToRegister()}' />
     </LinearLayout>
 </layout>

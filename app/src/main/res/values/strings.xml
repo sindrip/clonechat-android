@@ -2,5 +2,13 @@
     <string name="app_name">Clonechat</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="send_photo">Send</string>
+    <string name="take_photo">Take photo</string>
+    <string name="username_hint">Username</string>
+    <string name="password_hint">Password</string>
+    <string name="password_confirm">Confirm password</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="add_friend">Add :)</string>
+    <string name="delete_friend">Delete :(</string>
 </resources>
