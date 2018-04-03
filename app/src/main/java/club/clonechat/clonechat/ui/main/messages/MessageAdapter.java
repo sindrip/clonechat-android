@@ -1,11 +1,13 @@
 package club.clonechat.clonechat.ui.main.messages;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import java.util.List;
 
+import club.clonechat.clonechat.BuildConfig;
 import club.clonechat.clonechat.data.DataManager;
 import club.clonechat.clonechat.data.ui.model.Message;
 import club.clonechat.clonechat.databinding.ItemMessageViewBinding;
@@ -65,8 +67,8 @@ public class MessageAdapter extends RecyclerView.Adapter<BaseViewHolder> {
         }
 
         @Override
-        public void onButtonClick() {
-
+        public void onButtonClick(String id) {
+            mDataManager.setImageURL(BuildConfig.APIURL + "/images/" + id);
         }
     }
 

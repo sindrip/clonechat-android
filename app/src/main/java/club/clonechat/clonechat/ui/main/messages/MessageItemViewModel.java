@@ -21,11 +21,11 @@ public class MessageItemViewModel {
     }
 
     public void onButtonClick() {
-        mListener.onButtonClick();
+        mListener.onButtonClick(getMessage().getValue().getImageId());
     }
 
     public interface MessageItemViewModelListener {
 
-        void onButtonClick();
+        void onButtonClick(String id);
     }
 }
