@@ -35,8 +35,8 @@ public class SplashActivity extends BaseActivity<ActivitySplashBinding, SplashVi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        observeIsLoggedIn();
         mSplashViewModel.testLogin();
+        observeIsLoggedIn();
     }
 
     private void observeIsLoggedIn() {

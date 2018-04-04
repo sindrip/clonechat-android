@@ -78,6 +78,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
         observeLoggedIn();
         bindCameraListener();
         observeTakePhoto();
+        observeUploadStart();
     }
 
     private void bindPagerAdapter() {
@@ -132,6 +133,18 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
                         .addToBackStack(null)
                         .commit();
                 mActivityMainBinding.camera.captureImage();
+            }
+        });
+    }
+
+    private void observeUploadStart() {
+        mMainViewModel.getUploadStart().observe(this, data -> {
+            Log.d("frag", "her");
+            if (data) {
+                Log.d("frag", "was true");
+                mMainViewModel.setUploadStartFalse();
+                getSupportFragmentManager().popBackStackImmediate();
+                getSupportFragmentManager().popBackStackImmediate();
             }
         });
     }
