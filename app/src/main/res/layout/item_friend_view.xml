@@ -29,14 +29,14 @@
             <Button
                 style="@style/AddDeleteButton"
                 android:text="@string/add_friend"
-                android:background="#2dc630"
+                android:background="@drawable/addfriend"
                 android:visibility="@{viewModel.isFriend ? View.GONE : View.VISIBLE}"
                 android:onClick="@{() -> viewModel.onButtonClick()}"/>
 
             <Button
                 style="@style/AddDeleteButton"
-                android:background="#e65042"
                 android:text="@string/delete_friend"
+                android:background="@drawable/deletefriend"
                 android:visibility="@{viewModel.isFriend ? View.VISIBLE : View.GONE}"
                 android:onClick="@{() -> viewModel.onButtonClick()}"/>
 

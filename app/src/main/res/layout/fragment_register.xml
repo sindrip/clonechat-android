@@ -36,6 +36,7 @@ tools:context=".ui.authentication.register.RegisterFragment">
 
         <Button
             style="@style/BigButton"
+            android:id="@+id/button_register"
             android:text="@string/register"
             android:enabled="@{!viewModel.loading}"
             android:onClick="@{() -> viewModel.register()}" />

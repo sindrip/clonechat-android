@@ -4,6 +4,11 @@
     <color name="colorPrimaryDark">#9189C7</color>
     <color name="colorPrimaryLight">#e2e0ec</color>
     <color name="colorAccent">#483E8D</color>
+    <color name="colorAccentLight">#5a5293</color>
     <color name="colorWhite">#ffffff</color>
     <color name="colorGrayDark">#333333</color>
+    <color name="colorGreen">#2dc630</color>
+    <color name="colorGreenLight">#69ca6b</color>
+    <color name="colorRed">#e65042</color>
+    <color name="colorRedLight">#e7776d</color>
 </resources>
