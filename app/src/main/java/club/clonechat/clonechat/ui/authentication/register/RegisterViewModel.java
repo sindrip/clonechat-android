@@ -2,7 +2,9 @@ package club.clonechat.clonechat.ui.authentication.register;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
+import android.widget.Button;
 
+import club.clonechat.clonechat.R;
 import club.clonechat.clonechat.data.DataManager;
 import club.clonechat.clonechat.data.api.NetworkResource;
 import club.clonechat.clonechat.ui.base.BaseViewModel;

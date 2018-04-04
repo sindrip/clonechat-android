@@ -13,17 +13,16 @@
     </style>
 
     <style name="BigButton" parent="Theme.AppCompat.NoActionBar">
-        <item name="android:background">@color/colorAccent</item>
         <item name="android:textColor">@color/colorWhite</item>
         <item name="android:layout_margin">2dp</item>
         <item name="android:padding">5dp</item>
         <item name="android:textSize">25sp</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">80dp</item>
+        <item name="android:background">@drawable/bigbutton</item>
     </style>
 
     <style name="CameraButton" parent="Theme.AppCompat.NoActionBar">
-        <item name="android:background">@color/colorAccent</item>
         <item name="android:textColor">@color/colorWhite</item>
         <item name="android:textSize">16sp</item>
         <item name="android:layout_width">wrap_content</item>
@@ -33,6 +32,7 @@
         <item name="android:paddingLeft">2dp</item>
         <item name="android:paddingRight">2dp</item>
         <item name="android:alpha">0.85</item>
+        <item name="android:background">@drawable/camerabutton</item>
     </style>
 
     <style name="AddDeleteButton" parent="Theme.AppCompat.NoActionBar">
