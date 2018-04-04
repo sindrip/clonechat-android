@@ -1,10 +1,8 @@
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ui.main.camera.imagePreview.ImagePreviewFragment">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
     <data>
         <variable
             name="viewModel"
-            type="club.clonechat.clonechat.ui.main.camera.imagePreview.ImagePreviewViewModel" />
+            type="club.clonechat.clonechat.ui.main.messages.imageView.ImageViewViewModel"/>
     </data>
 
     <FrameLayout
@@ -13,19 +11,23 @@
         android:background="#ffffff">
 
         <android.support.v7.widget.AppCompatImageView
-            android:id="@+id/imagepreview"
+            android:id="@+id/imageview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:adjustViewBounds="true" />
 
         <Button
-            style="@style/CameraButton"
-            android:id="@+id/gotosendimage"
-            android:text="@string/send_photo" />
+            android:id="@+id/goback"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|center"
-            android:onClick="@{() -> viewModel.getNavigator().goToSendImage()}"
-            />
+            android:text="Close"
+            android:onClick="@{() -> viewModel.getNavigator().goBack()}"/>
+
+        <ProgressBar
+            android:id="@+id/imageprogressbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:indeterminate="true" />
     </FrameLayout>
 </layout>

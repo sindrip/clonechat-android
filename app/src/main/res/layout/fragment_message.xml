@@ -21,24 +21,20 @@
             android:elevation="4dp"
             app:title="Messages"/>
 
-        <LinearLayout
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/messageSwipeRefresh"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:background="#ffffff">
+            android:background="#ffffff"
+            app:onRefreshListener="@{() -> viewModel.refreshMessageList()}">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Message fragment here"/>
-            
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="80dp"
-                android:text="Logout :("
-                android:onClick="@{() -> viewModel.logout()}"/>
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/messageRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
 
-        </LinearLayout>
+        </android.support.v4.widget.SwipeRefreshLayout>
 
     </LinearLayout>
 </layout>
