@@ -4,13 +4,10 @@ import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.util.Log;
 
-import java.util.List;
-
 import club.clonechat.clonechat.data.api.model.ImageResponse;
 import club.clonechat.clonechat.data.api.model.MessageRequest;
 import club.clonechat.clonechat.data.api.retrofit.ImageService;
 import club.clonechat.clonechat.data.api.retrofit.MessageService;
-import club.clonechat.clonechat.data.ui.model.User;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -67,7 +64,7 @@ public class ImageRepository {
         this.uploadStart.setValue(false);
     }
 
-    public void uploadPhoto(List<User> users) {
+    public void uploadPhoto(String username) {
         MultipartBody.Part filePart = MultipartBody.Part.createFormData("image", "coolio", RequestBody.create(MediaType.parse("image/*"), mPhotoBytes.getValue()));
 
         this.uploadStart.setValue(true);
@@ -75,40 +72,33 @@ public class ImageRepository {
             @Override
             public void onResponse(Call<ImageResponse> call, Response<ImageResponse> response) {
                 if (response.isSuccessful()) {
-                    Log.d("frag", "Image has been uploaded, sending to users");
-                    sendPhotoToUsers(users, response.body().getUuid());
+                    Log.d("frag", "is done");
+                    Log.d("frag", response.body().getId());
+                    Log.d("frag", response.toString());
+                    MessageRequest msg = new MessageRequest(username, response.body().getUuid());
+
+                    mMessageService.sendMessageToUser(msg).enqueue(new Callback<Void>() {
+                        @Override
+                        public void onResponse(Call<Void> call, Response<Void> response) {
+                        }
+
+                        @Override
+                        public void onFailure(Call<Void> call, Throwable t) {
+                        }
+                    });
                 } else {
-                    Log.d("frag", "Uploading photo was not successful");
+                    // error handling?
+                    Log.d("frag", String.valueOf(response.raw().code()));
+                    Log.d("frag", "some fail");
                 }
             }
 
             @Override
             public void onFailure(Call<ImageResponse> call, Throwable t) {
                 // error handling?
-                Log.d("frag", "Error uploading photo");
+                Log.d("frag", "some other fail");
             }
         });
-    }
-
-    private void sendPhotoToUsers(List<User> users, String uuid) {
-        Log.d("frag", "Sending image to users");
-        for (User user : users) {
-            MessageRequest msg = new MessageRequest(user.getUsername(), uuid);
-
-            mMessageService.sendMessageToUser(msg).enqueue(new Callback<Void>() {
-                @Override
-                public void onResponse(Call<Void> call, Response<Void> response) {
-                    Log.d("frag", "Image send to user: " + user.getUsername());
-
-                }
-
-                @Override
-                public void onFailure(Call<Void> call, Throwable t) {
-                    Log.d("frag", "Failed to send image to user: " + user.getUsername());
-
-                }
-            });
-        }
     }
 
 }

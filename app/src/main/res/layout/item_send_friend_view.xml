@@ -29,28 +29,10 @@
                 android:layout_height="wrap_content"
                 android:background="#42F445"
                 android:text="Send"
-                android:visibility="@{viewModel.isSent ? View.GONE : View.VISIBLE}"
-                android:onClick="@{() -> viewModel.onSendButtonClick()}"/>
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="#F45341"
-                android:text="Unsend"
-                android:visibility="@{viewModel.isSent ? View.VISIBLE : View.GONE}"
-                android:onClick="@{() -> viewModel.onUnsendButtonClick()}"/>
-
+                android:onClick="@{() -> viewModel.onButtonClick()}"/>
 
 
         </LinearLayout>
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Send"
-            android:layout_gravity="center|bottom"
-            android:onClick="@{() -> viewModel.onSendImageButtonClick()}"/>
-
 
     </android.support.v7.widget.CardView>
 </layout>
