@@ -82,6 +82,7 @@ public class ImageViewFragment extends BaseFragment<FragmentImageViewBinding, Im
             public void onSuccess() {
                 Log.d("frag", "success");
                 mFragmentImageViewBinding.imageprogressbar.setVisibility(View.GONE);
+                mImageViewViewModel.getDataManager().refreshMessageList();
             }
 
             @Override
@@ -93,6 +94,7 @@ public class ImageViewFragment extends BaseFragment<FragmentImageViewBinding, Im
 
     @Override
     public void goBack() {
+        Log.d("frag", "goback called");
         if (!mImageViewViewModel.getImageURL().equals("")) {
             getBaseActivity().getSupportFragmentManager()
                     .popBackStackImmediate();

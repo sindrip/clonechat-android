@@ -8,21 +8,15 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#ffffff">
+        android:background="#ffffff"
+        android:onClick="@{() -> viewModel.getNavigator().goBack()}">
 
         <android.support.v7.widget.AppCompatImageView
             android:id="@+id/imageview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:adjustViewBounds="true" />
-
-        <Button
-            android:id="@+id/goback"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|center"
-            android:text="Close"
-            android:onClick="@{() -> viewModel.getNavigator().goBack()}"/>
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"/>
 
         <ProgressBar
             android:id="@+id/imageprogressbar"
