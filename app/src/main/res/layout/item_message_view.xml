@@ -24,6 +24,11 @@
                 android:layout_height="wrap_content"
                 android:text="@{viewModel.message.username}"/>
 
+            <com.github.curioustechizen.ago.RelativeTimeTextView
+                android:id="@+id/timestamp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

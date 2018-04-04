@@ -24,6 +24,7 @@ import club.clonechat.clonechat.ui.authentication.AuthenticationActivity;
 import club.clonechat.clonechat.ui.base.BaseActivity;
 import club.clonechat.clonechat.ui.main.camera.imagePreview.ImagePreviewFragment;
 import club.clonechat.clonechat.ui.main.friends.addFriend.AddFriendFragment;
+import club.clonechat.clonechat.ui.main.messages.imageView.ImageViewFragment;
 
 public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewModel> implements MainNavigator{
 
@@ -79,6 +80,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
         bindCameraListener();
         observeTakePhoto();
         observeUploadStart();
+        observeImageUrl();
     }
 
     private void bindPagerAdapter() {
@@ -145,6 +147,18 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
                 mMainViewModel.setUploadStartFalse();
                 getSupportFragmentManager().popBackStackImmediate();
                 getSupportFragmentManager().popBackStackImmediate();
+            }
+        });
+    }
+
+    private void observeImageUrl() {
+        mMainViewModel.getImageURL().observe(this, url -> {
+            if (!url.equals("")){
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.main_overlay, ImageViewFragment.newInstance())
+                        .addToBackStack(null)
+                        .commit();
             }
         });
     }

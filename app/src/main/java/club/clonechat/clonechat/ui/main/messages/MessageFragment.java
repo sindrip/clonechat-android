@@ -82,25 +82,12 @@ public class MessageFragment extends BaseFragment<FragmentMessageBinding, Messag
         mFragmentMessageBinding.messageRecyclerView.setItemAnimator(new DefaultItemAnimator());
         mFragmentMessageBinding.messageRecyclerView.setAdapter(mMessageAdapter);
         observeMessageList();
-        observeImageUrl();
     }
 
     private void observeMessageList() {
         mMessageViewModel.getMessagelist().observe(this, m -> {
             mMessageAdapter.newItems(m);
             mFragmentMessageBinding.messageSwipeRefresh.setRefreshing(false);
-        });
-    }
-
-    private void observeImageUrl() {
-        mMessageViewModel.getImageUrl().observe(this, url -> {
-            if (!url.equals("")){
-                getBaseActivity().getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.main_overlay, ImageViewFragment.newInstance())
-                        .addToBackStack(null)
-                        .commit();
-            }
         });
     }
 

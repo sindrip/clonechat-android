@@ -19,7 +19,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:elevation="4dp"
-            app:title="Messages"/>
+            app:title="Messages">
+
+            <android.support.v7.widget.AppCompatImageView
+                android:src="@drawable/ic_action_friend_add"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{() -> viewModel.logout()}"/>
+
+        </android.support.v7.widget.Toolbar>
 
         <android.support.v4.widget.SwipeRefreshLayout
             android:id="@+id/messageSwipeRefresh"

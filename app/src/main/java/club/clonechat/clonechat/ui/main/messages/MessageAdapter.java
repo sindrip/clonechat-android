@@ -63,6 +63,7 @@ public class MessageAdapter extends RecyclerView.Adapter<BaseViewHolder> {
             final Message message = mMessageList.get(position);
             mMessageItemViewModel = new MessageItemViewModel(message, this);
             mBinding.setViewModel(mMessageItemViewModel);
+            mBinding.timestamp.setReferenceTime(mMessageItemViewModel.getMessage().getValue().getCreatedAt());
             mBinding.executePendingBindings();
         }
 
