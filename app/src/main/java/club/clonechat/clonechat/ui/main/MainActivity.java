@@ -147,8 +147,8 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
             if (data) {
                 Log.d("frag", "was true");
                 mMainViewModel.setUploadStartFalse();
-                getSupportFragmentManager().popBackStackImmediate();
-                getSupportFragmentManager().popBackStackImmediate();
+                //getSupportFragmentManager().popBackStackImmediate();
+                //getSupportFragmentManager().popBackStackImmediate();
             }
         });
     }
