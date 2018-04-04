@@ -123,8 +123,8 @@ public class AppDataManager implements DataManager {
     }
 
     @Override
-    public void uploadPhoto(List<User> users) {
-        mImageRepository.uploadPhoto(users);
+    public void uploadPhoto(String username) {
+        mImageRepository.uploadPhoto(username);
     }
 
     @Override
