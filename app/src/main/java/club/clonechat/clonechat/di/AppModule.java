@@ -20,7 +20,6 @@ import club.clonechat.clonechat.data.api.retrofit.AuthService;
 import club.clonechat.clonechat.data.api.retrofit.FriendService;
 import club.clonechat.clonechat.data.api.retrofit.ImageService;
 import club.clonechat.clonechat.data.api.retrofit.MessageService;
-import club.clonechat.clonechat.data.api.retrofit.UnauthorizedInterceptor;
 import club.clonechat.clonechat.data.repository.AuthRepository;
 import club.clonechat.clonechat.data.repository.FriendRepository;
 import club.clonechat.clonechat.data.repository.ImageRepository;
@@ -79,9 +78,6 @@ abstract class AppModule {
     static Picasso providePicasso(Context context, OkHttp3Downloader downloader) {
         return new Picasso.Builder(context).downloader(downloader).build();
     }
-
-//    OkHttpDownloader downloader = new OkHttpDownloader(client);
-//    Picasso picasso = new Picasso.Builder(context).downloader(downloader).build();
 
     @Provides
     @Singleton

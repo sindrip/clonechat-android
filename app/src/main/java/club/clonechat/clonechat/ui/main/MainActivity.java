@@ -71,6 +71,8 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
         super.onCreate(savedInstanceState);
         mActivityMainBinding = getViewDataBinding();
         mActivityMainBinding.camera.setMethod(CameraKit.Constants.METHOD_STILL);
+        mMainViewModel.getDataManager().refreshMessageList();
+        mMainViewModel.getDataManager().refreshFriendList();
         setUp();
     }
 
