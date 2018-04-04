@@ -118,8 +118,8 @@ public class AppDataManager implements DataManager {
     }
 
     @Override
-    public void uploadPhoto(String username) {
-        mImageRepository.uploadPhoto(username);
+    public void uploadPhoto(List<User> users) {
+        mImageRepository.uploadPhoto(users);
     }
 
     @Override

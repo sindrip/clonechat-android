@@ -30,6 +30,7 @@ public class FriendItemViewModel {
     }
 
     public void onButtonClick() {
+
         mListener.onButtonClick(user.getValue().getUsername());
     }
 

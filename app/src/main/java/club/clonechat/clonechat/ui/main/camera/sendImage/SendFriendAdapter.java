@@ -18,6 +18,7 @@ import club.clonechat.clonechat.ui.main.friends.FriendItemViewModel;
 public class SendFriendAdapter extends RecyclerView.Adapter<BaseViewHolder> {
 
     private List<User> mFriendList;
+    private boolean[] sentImageFriendList;
     private DataManager mDataManager;
 
     public SendFriendAdapter(DataManager dataManager, List<User> friendList) {
@@ -48,6 +49,7 @@ public class SendFriendAdapter extends RecyclerView.Adapter<BaseViewHolder> {
     public void newItems(List<User> friendList) {
         mFriendList.clear();
         mFriendList.addAll(friendList);
+        sentImageFriendList = new boolean[mFriendList.size()];
         notifyDataSetChanged();
     }
 
@@ -64,25 +66,41 @@ public class SendFriendAdapter extends RecyclerView.Adapter<BaseViewHolder> {
         @Override
         public void onBind(int position) {
             final User user = mFriendList.get(position);
-            mSendFriendItemViewModel = new SendFriendItemViewModel(user, this);
+            mSendFriendItemViewModel = new SendFriendItemViewModel(user, sentImageFriendList[position], this);
             mBinding.setViewModel(mSendFriendItemViewModel);
             mBinding.executePendingBindings();
         }
 
         @Override
-        public void onButtonClick(String username) {
-            if (username != null) {
-                List removedList = new ArrayList();
-                for(User u : mFriendList){
-                    if(u.getUsername() == username) {
-                        removedList.add(u);
-                    }
-                }
-                mFriendList.removeAll(removedList);
+        public void onSendButtonClick(User user) {
+            if (user != null) {
+                sentImageFriendList[mFriendList.indexOf(user)] = true;
                 notifyDataSetChanged();
-
-                mDataManager.uploadPhoto(username);
+                //mDataManager.uploadPhoto(user.getUsername());
             }
         }
+
+        @Override
+        public void onUnsendButtonClick(User user) {
+            if (user != null) {
+                sentImageFriendList[mFriendList.indexOf(user)] = false;
+                notifyDataSetChanged();
+            }
+        }
+
+        @Override
+        public void onSendImageButtonClick(User user) {
+            if (user != null) {
+                List<User> recipientUserList = new ArrayList<>();
+                for (int i = 0; i < mFriendList.size(); i++) {
+                    if (sentImageFriendList[i]) {
+                        recipientUserList.add(mFriendList.get(i));
+                    }
+                }
+                mDataManager.uploadPhoto(recipientUserList);
+            }
+        }
+
+
     }
 }
