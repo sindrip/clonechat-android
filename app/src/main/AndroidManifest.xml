@@ -22,9 +22,11 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.authentication.AuthenticationActivity" />
-
         <activity android:name=".ui.main.MainActivity" />
+
+        <activity android:name=".ui.authentication.AuthenticationActivity"
+            android:screenOrientation="portrait"/>
+
 
     </application>
 

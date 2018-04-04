@@ -12,17 +12,18 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical" >
+        android:orientation="vertical"
+        android:background="@color/colorPrimary"
+        android:gravity="bottom"
+        android:paddingBottom="10dp">
 
         <Button
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:text="Login"
-            android:onClick="@{() -> viewModel.getNavigator().goToLogin()}"/>
+            style="@style/BigButton"
+            android:text="@string/login"
+            android:onClick="@{() -> viewModel.getNavigator().goToLogin()}" />
         <Button
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:text="Register"
-            android:onClick='@{() -> viewModel.getNavigator().goToRegister()}'/>
+            style="@style/BigButton"
+            android:text="@string/register"
+            android:onClick='@{() -> viewModel.getNavigator().goToRegister()}' />
     </LinearLayout>
 </layout>
